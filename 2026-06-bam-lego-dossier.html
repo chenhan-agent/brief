@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bricks &amp; Minifigs / Mansell LEGO Dispute — Dossier R3</title>
+  <meta name="description" content="Independent investigation dossier: Bryan &amp; Warren Mansell allege a Star Wars LEGO collection consigned to a Salem, Oregon Bricks &amp; Minifigs franchise was never fully returned or paid for; BAM Corporate disputes liability and has filed multi-state lawsuits." />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --panel: #151924;
+      --panel2: #1b2130;
+      --text: #e6edf3;
+      --muted: #9aa4b2;
+      --line: #2a3345;
+      --accent: #6ea8fe;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,17,23,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 12px 10px;
+      border-bottom: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      letter-spacing: .02em;
+    }
+    nav a:hover { color: var(--text); border-bottom-color: var(--accent); }
+    /* ── LAYOUT ── */
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 18px 64px; }
+    section { margin-bottom: 36px; }
+    h1 { font-size: 1.85rem; line-height: 1.2; margin-bottom: 10px; }
+    h2 { font-size: 1.2rem; margin: 0 0 14px; color: var(--accent); letter-spacing: .01em; }
+    h3 { font-size: 1rem; margin-bottom: 8px; }
+    p { margin-bottom: 8px; }
+    ul { padding-left: 20px; margin-bottom: 8px; }
+    li { margin-bottom: 4px; }
+    a { color: #93c5fd; }
+    a:hover { color: #bfdbfe; }
+    /* ── CARDS ── */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+    .card2 {
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+    .primer-card {
+      background: linear-gradient(135deg, rgba(110,168,254,.10) 0%, rgba(110,168,254,.03) 100%);
+      border: 1px solid rgba(110,168,254,.3);
+      border-radius: 14px;
+      padding: 20px 22px;
+      margin-bottom: 24px;
+    }
+    .primer-card p { margin-bottom: 6px; font-size: 1.02rem; }
+    /* ── GRID ── */
+    .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    /* ── BADGES ── */
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin: 0 4px 4px 0;
+      text-transform: uppercase;
+    }
+    .b-confirmed   { background: #052e16; color: #34d399; border: 1px solid rgba(52,211,153,.35); }
+    .b-attributed  { background: #1e3a5f; color: #93c5fd; border: 1px solid rgba(147,197,253,.35); }
+    .b-disputed    { background: #451a03; color: #fde68a; border: 1px solid rgba(253,230,138,.35); }
+    .b-social      { background: #2d1b69; color: #c4b5fd; border: 1px solid rgba(196,181,253,.35); }
+    .b-inference   { background: #1e293b; color: #94a3b8; border: 1px solid rgba(148,163,184,.35); }
+    .b-unknown     { background: #450a0a; color: #fca5a5; border: 1px solid rgba(252,165,165,.35); }
+    .b-party-a     { background: rgba(239,68,68,.15); color: #fca5a5; border: 1px solid rgba(239,68,68,.4); }
+    .b-party-b     { background: rgba(59,130,246,.15); color: #93c5fd; border: 1px solid rgba(59,130,246,.4); }
+    .b-party-c     { background: rgba(234,179,8,.15);  color: #fde68a; border: 1px solid rgba(234,179,8,.4); }
+    /* ── KPI ROW ── */
+    .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 16px; }
+    .kpi { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+    .kpi .klabel { color: var(--muted); font-size: .82rem; margin-bottom: 6px; }
+    .kpi .kvalue { font-size: 1.05rem; font-weight: 700; }
+    /* ── VERTICAL TIMELINE ── */
+    .timeline { position: relative; padding-left: 2rem; margin-top: 12px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #334155;
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 1.5rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.625rem;
+      top: 0.9rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #64748b;
+      border: 2px solid var(--bg);
+    }
+    .tl-date { font-size: .82rem; color: var(--muted); margin-bottom: 4px; }
+    .tl-why { border-left: 3px solid #334155; padding-left: 10px; margin-top: 8px; font-size: .92rem; color: var(--muted); }
+    /* ── ISSUE MATRIX ── */
+    .issue-card { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 14px; }
+    .issue-row { display: grid; grid-template-columns: 160px 1fr; gap: 8px; margin-bottom: 6px; font-size: .93rem; }
+    .issue-label { color: var(--muted); font-weight: 600; font-size: .82rem; padding-top: 2px; }
+    .editorial-box { background: rgba(110,168,254,.07); border: 1px solid rgba(110,168,254,.2); border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: .88rem; }
+    .editorial-box strong { color: #93c5fd; }
+    /* ── SOURCE REGISTER ── */
+    .source-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-top: 10px; }
+    .source-table th, .source-table td { border: 1px solid var(--line); padding: 9px 11px; text-align: left; vertical-align: top; }
+    .source-table th { background: #1d2433; color: var(--muted); font-weight: 700; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; }
+    .source-table tr:hover td { background: rgba(255,255,255,.02); }
+    .sid { font-family: ui-monospace, monospace; font-weight: 700; color: #93c5fd; white-space: nowrap; }
+    /* ── OPEN QUESTIONS ── */
+    .oq-item { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 15px 16px; margin-bottom: 12px; }
+    .oq-item h4 { font-size: .97rem; margin-bottom: 6px; }
+    .oq-meta { display: grid; grid-template-columns: 100px 1fr; gap: 6px; font-size: .87rem; margin-top: 6px; }
+    .oq-meta-label { color: var(--muted); font-weight: 600; }
+    /* Stakeholder cards - replaced with table */
+    /* ── FORWARD SCENARIOS ── */
+    .fs-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+    /* ── CAVEATS ── */
+    .caveat-section { background: rgba(252,165,165,.05); border: 1px solid rgba(252,165,165,.2); border-radius: 14px; padding: 20px 22px; }
+    .caveat-section h3 { color: #fca5a5; margin-bottom: 8px; font-size: .95rem; }
+    /* ── MISC ── */
+    .divider { height: 1px; background: var(--line); margin: 20px 0; }
+    .muted { color: var(--muted); }
+    .small { font-size: .88rem; }
+    .mono { font-family: ui-monospace, monospace; }
+    code { font-family: ui-monospace, monospace; color: #93c5fd; font-size: .9em; }
+    .asymmetry-banner { background: rgba(253,230,138,.08); border: 1px solid rgba(253,230,138,.25); border-radius: 10px; padding: 12px 14px; margin: 12px 0; font-size: .9rem; }
+    .asymmetry-banner strong { color: #fde68a; }
+    footer { border-top: 1px solid var(--line); padding: 20px 18px; text-align: center; color: var(--muted); font-size: .83rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
+    /* Valuation shift table — removed, replaced with inline note */
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#primer">Primer</a>
+  <a href="#summary">Summary</a>
+  <a href="#known">Known</a>
+  <a href="#disputed">Disputed</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#parties">Parties</a>
+  <a href="#stakeholders">Stakeholders</a>
+  <a href="#matrix">Issues</a>
+  <a href="#sources">Sources</a>
+  <a href="#social">Social</a>
+  <a href="#openq">Open&nbsp;Qs</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#caveats">Caveats</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- ─── SECTION 0: READER ORIENTATION PRIMER ─── -->
+  <section id="primer">
+    <div class="primer-card">
+      <span class="badge b-attributed">Section 0 — Reader Orientation Primer</span>
+      <p style="margin-top:10px"><strong>Bricks &amp; Minifigs (BAM)</strong> is a US franchise chain that buys, sells, and trades LEGO sets and minifigures; its corporate policy explicitly prohibits consignment arrangements at franchise stores.</p>
+      <p><strong>Bryan Mansell</strong>, acting on behalf of his father Warren Mansell, brought a large Star Wars LEGO collection to the <strong>Salem/Keizer, Oregon</strong> BAM franchise store operated by <strong>Chrystal Law-Gorman</strong>. Bryan alleges the collection was accepted under a consignment-style arrangement and has never been fully returned or paid for.</p>
+      <p>The core grievance: <em>Bryan and Warren Mansell claim they are owed either the physical return of their remaining LEGO collection or full compensation for items sold — BAM Corporate disputes both the arrangement's legitimacy and its own liability as franchisor.</em></p>
+      <p>As of June 8, 2026: BAM has permanently closed the Salem store, separated two named executives, filed civil lawsuits in Utah (defamation, RICO, civil stalking), and obtained a Temporary Restraining Order. No final ruling has been issued; the dispute is active and contested.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 1: EXECUTIVE SUMMARY ─── -->
+  <section id="summary">
+    <h1>Bricks &amp; Minifigs / Mansell LEGO Dispute — Investigation Dossier</h1>
+    <p class="muted small">Round 3 · Last updated: 2026-06-08 · Language: English · Format: Self-contained HTML</p>
+
+    <div class="legend">
+      <span class="badge b-confirmed">confirmed</span>
+      <span class="badge b-attributed">attributed</span>
+      <span class="badge b-disputed">disputed</span>
+      <span class="badge b-social">social</span>
+      <span class="badge b-inference">inference</span>
+      <span class="badge b-unknown">unknown</span>
+    </div>
+
+    <div class="card">
+      <h2 style="margin-bottom:10px">Executive Summary</h2>
+      <p>BAM's franchise rules explicitly prohibit consignment; Bryan and Warren Mansell allege a consignment-style arrangement with franchisee Law-Gorman was never fully returned or compensated. BAM terminated Law-Gorman in November 2024, then publicly revised its collection valuation from $60–80K (May 28) to $95–100K (June 4) — that shift is itself a confirmed fact. <span class="badge b-confirmed">confirmed</span></p>
+      <p>YouTuber Ben Schneider ("Reckless Ben") traveled to BAM's Utah HQ, physically confronted executives, and was sued for defamation, civil stalking, and Utah RICO; a TRO was obtained. <span class="badge b-confirmed">confirmed</span></p>
+      <p>June 4, 2026: Salem store permanently closed; executives Best and Johnson separated from BAM; BAM reiterated an offer to return remaining LEGO and compensate unaccounted items. No final court ruling or item-by-item reconciliation is public. <span class="badge b-confirmed">confirmed</span></p>
+      <p>A Sacramento BAM franchise temporarily closed due to death threats — collateral harm to a store unrelated to the Salem dispute. <span class="badge b-confirmed">confirmed</span></p>
+
+      <div class="kpi-row">
+        <div class="kpi"><div class="klabel">Core legal issue</div><div class="kvalue">Consignment authorization &amp; liability</div></div>
+        <div class="kpi"><div class="klabel">Core factual issue</div><div class="kvalue">Custody &amp; whereabouts of collection</div></div>
+        <div class="kpi"><div class="klabel">Geographic reason</div><div class="kvalue">OR store → UT corporate HQ</div></div>
+        <div class="kpi"><div class="klabel">Current status</div><div class="kvalue">Multi-case, no final ruling</div></div>
+        <div class="kpi"><div class="klabel">BAM valuation shift</div><div class="kvalue">$60–80K → $95–100K (confirmed)</div></div>
+        <div class="kpi"><div class="klabel">Community estimate</div><div class="kvalue">~$200K [social, unverified]</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 2: WHAT IS KNOWN ─── -->
+  <section id="known">
+    <h2>§2 — What Is Known (Confirmed Facts)</h2>
+    <div class="card">
+      <ul>
+        <li>BAM's franchise model is buy/sell/trade; consignment is prohibited by corporate policy. [<span class="mono sid">S1–S3</span>]</li>
+        <li>Bryan Mansell (on behalf of his father Warren) brought a Star Wars LEGO collection — 780+ sets, ~1,200 minifigures — to the Salem/Keizer BAM franchise; it was publicly displayed under BAM branding in November 2023. [<span class="mono sid">S3, S5</span>]</li>
+        <li>Chrystal Law-Gorman operated the Salem/Keizer franchise; her franchise was terminated by BAM Corporate in November 2024. [<span class="mono sid">S3, S4</span>]</li>
+        <li>BAM claims Law-Gorman maintained three sets of books; POS records show ≥$52,000 in collection sales during her tenure. Bryan says he received ~$15,000. [<span class="mono sid">S3, S7</span>]</li>
+        <li>BAM issued four public documents: May 21, May 28, June 4 (Timeline), June 4 (Closure). [<span class="mono sid">S1–S4</span>] Valuation shifted from $60–80K (May 28) to $95–100K (June 4). Both figures are confirmed as BAM's own stated positions.</li>
+        <li>Ben Schneider ("Reckless Ben") traveled to Utah and physically confronted BAM executives; BAM filed civil suits (defamation, civil stalking, Utah RICO) and obtained a TRO ~May 27–28. [<span class="mono sid">S3, S6</span>]</li>
+        <li>June 4, 2026: Salem store permanently closed; Best and Johnson separated from BAM; BAM reiterated compensation offer to Bryan. [<span class="mono sid">S4</span>]</li>
+        <li>A Sacramento BAM franchise temporarily closed due to death threats; it is unrelated to the Salem dispute. [<span class="mono sid">S2, S5</span>]</li>
+      </ul>
+      <div class="asymmetry-banner">
+        <strong>⚠ Sourcing Asymmetry:</strong> BAM: 4 primary documents (S1–S4), checkable verbatim. Mansells: primarily media (S5), podcast (S7), social (S8). Law-Gorman: near-zero independent documentation — the largest single sourcing gap. Asymmetry affects labeling, not credibility.
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 3: WHAT IS DISPUTED ─── -->
+  <section id="disputed">
+    <h2>§3 — What Is Disputed</h2>
+    <div class="grid2">
+      <div class="card2">
+        <span class="badge b-disputed">disputed</span>
+        <h3>Authorized consignment or unauthorized side-deal?</h3>
+        <p><strong>BAM [S1–S3]:</strong> Never authorized; side-deal by Law-Gorman alone violating franchise rules; no corporate obligation to Mansells.</p>
+        <p><strong>Mansells [S5, S7]:</strong> Occurred in BAM-branded premises, promoted on store pages — apparent authority may apply.</p>
+        <p class="muted small">Needed: Franchise agreement on apparent authority; BAM–Law-Gorman internal communications; court ruling.</p>
+      </div>
+      <div class="card2">
+        <span class="badge b-disputed">disputed</span>
+        <h3>True value of the collection</h3>
+        <p><strong>BAM:</strong> $60–80K [S2, May 28] → revised $95–100K [S3, June 4]; calls $200K "promotional." The revision is a confirmed fact in BAM's own documents.</p>
+        <p><strong>Community [S8, S9]:</strong> ~$200K based on retail prices — methodology unverified; no independent appraisal confirmed.</p>
+      </div>
+      <div class="card2">
+        <span class="badge b-disputed">disputed</span>
+        <h3>Physical custody of remaining items</h3>
+        <p><strong>BAM [S3]:</strong> ~25 boxes ($2–5K) identified post-takeover; offer to return made; rest accounted for through Law-Gorman's sales.</p>
+        <p><strong>Mansells [S5, S7]:</strong> More remains unaccounted; reconciliation inadequate. Current physical location: <span class="badge b-unknown">unknown</span></p>
+      </div>
+      <div class="card2">
+        <span class="badge b-disputed">disputed</span>
+        <h3>Was BAM's lawsuit retaliatory?</h3>
+        <p><strong>BAM [S3, S4]:</strong> Responds to harassment, defamation, and physically threatening behavior by Schneider; TRO addresses real safety threat.</p>
+        <p><strong>Community [S8, S9]:</strong> SLAPP-style suppression of legitimate consumer grievance. TRO text not publicly confirmed; scope unknown.</p>
+      </div>
+      <div class="card2">
+        <span class="badge b-disputed">disputed</span>
+        <h3>Law-Gorman's liability vs. BAM Corporate's</h3>
+        <p><strong>BAM [S1, S2]:</strong> Law-Gorman's individual misconduct (three-book accounting); corporate responsibility ends at her contract.</p>
+        <p><strong>Contested [S5, S10]:</strong> BAM took over the store in Nov 2024; if collection items or proceeds passed through corporate-controlled operations post-takeover, liability may not end at franchise termination.</p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px; padding:12px 16px">
+      <span class="badge b-confirmed">confirmed: BAM valuation shift</span>
+      <p style="margin-top:6px">BAM stated <strong>$60–80K</strong> on May 28 [S2] then revised to <strong>$95–100K</strong> on June 4 [S3], describing ~$200K as "promotional." The $35–40K upward revision is confirmed in BAM's own documents. This dossier writes "community-cited ~$200K [social, unverified]" — never as established fact.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 4: TIMELINE ─── -->
+  <section id="timeline">
+    <h2>§4 — Timeline</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-date">2023-09 to 2023-11 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Bryan contacts Law-Gorman; collection enters Salem/Keizer store; publicly displayed at Nov 2023 BAM store event</h3>
+        <p>780+ sets, ~1,200 minifigures featured in store branding and promotional materials. [S3, S5]</p>
+        <div class="tl-why">⚑ Why it matters: Public display under BAM branding supports apparent-authority argument; weakens "purely private side-deal" defense.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2023-11 <span class="badge b-disputed">disputed</span></div>
+        <h3>Consignment arrangement formed between Bryan and Law-Gorman</h3>
+        <p>BAM says unauthorized; Mansells say it occurred openly under BAM branding. [S1–S3, S5]</p>
+        <div class="tl-why">⚑ Why it matters: Liability fork — pure private deal limits BAM's exposure; apparent authority expands it.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2023-11 to 2024-10 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Items sold under Law-Gorman; POS shows ≥$52K in sales; Bryan says he received ~$15K</h3>
+        <p>BAM alleges Law-Gorman kept three sets of books. [S3] Bryan's payment figure via media/podcast. [S7]</p>
+        <div class="tl-why">⚑ Why it matters: $52K+ sold vs. ~$15K paid is the core financial gap; if Law-Gorman's accounting misconduct is confirmed, responsibility shifts toward her tenure.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2024-11-08 to 2024-11-14 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>BAM terminates Law-Gorman franchise; handover dispute begins</h3>
+        <p>BAM cites debt, contract violations, uncooperative handover. Law-Gorman separately contests termination. [S3, S4, S10]</p>
+        <div class="tl-why">⚑ Why it matters: Who controlled the physical inventory at this moment defines post-takeover liability; this is the most critical time window in the case.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2024-11 (mid-late) <span class="badge b-disputed">disputed</span></div>
+        <h3>Bryan visits store; BAM identifies ~25 boxes ($2–5K); Mansells dispute adequacy</h3>
+        <p>BAM offered to return identified items; Mansells say far more remains. [S2, S3, S5]</p>
+        <div class="tl-why">⚑ Why it matters: Gap between BAM's identified items and Mansells' claimed remainder defines the dollar magnitude of any corporate liability claim.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2025-04-16 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Bryan Mansell featured on Collectors Weekly podcast</h3>
+        <p>Dispute moves from local commercial matter into national collector community. [S7]</p>
+        <div class="tl-why">⚑ Why it matters: Inflection point — case becomes a brand-threat, making further BAM inaction increasingly costly.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-05 (early) <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Reckless Ben publishes YouTube coverage; community mobilization begins; pressure extends to BAM franchise network</h3>
+        <p>Videos reach wide audience; review-bombing and threats begin. [S8]</p>
+        <div class="tl-why">⚑ Why it matters: Converts private dispute into national brand crisis; forces BAM into public defensive communications.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-05-21 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>BAM issues first public statement; condemns harassment of unrelated franchises</h3>
+        <p>Asserts no party to consignment; condemns harassment. [S1]</p>
+        <div class="tl-why">⚑ Why it matters: BAM shifts from legal silence to public communications defense — community pressure had reached brand-threat level.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-05-27/28 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>BAM files Utah civil suits (defamation, stalking, RICO); obtains TRO; publishes $60–80K valuation</h3>
+        <p>Schneider and Mansell among named defendants. TRO exact language not confirmed. [S2, S6]</p>
+        <div class="tl-why">⚑ Why it matters: Dispute crosses state lines; second legal battleground (speech/harassment) opens alongside the core property dispute.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-05 late <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Ben Schneider travels to Utah; physically confronts BAM executives; arrested in Utah</h3>
+        <p>Went to corporate offices and, per media, residential locations. [S6, S8]</p>
+        <div class="tl-why">⚑ Why it matters: Online advocacy becomes physical confrontation, materially strengthening BAM's stalking claims and creating independent criminal risk for Schneider.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-06-04 <span class="badge b-confirmed">confirmed</span></div>
+        <h3>BAM closes Salem store permanently; separates Best and Johnson; revises valuation to $95–100K; reiterates compensation offer</h3>
+        <p>Two documents published same day [S3, S4]; valuation shift confirmed.</p>
+        <div class="tl-why">⚑ Why it matters: BAM's largest public concession — acknowledges failures, removes executives, reframes financial scale. Valuation revision undermines May 28 figure's credibility.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-date">2026-06-05 onward <span class="badge b-confirmed">confirmed</span></div>
+        <h3>Sacramento BAM franchise closes temporarily; collateral community harassment continues</h3>
+        <p>Sacramento store unrelated to Salem dispute. [S2, S5]</p>
+        <div class="tl-why">⚑ Why it matters: Community anger has detached from the specific grievance, threatening unrelated businesses and raising independent ethical questions about the campaign's methods.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SECTION 5a: PARTY MAP ─── -->
+  <section id="parties">
+    <h2>§5a — Party Map (Primary Dispute Parties Only)</h2>
+    <p class="muted small" style="margin-bottom:14px">Only primary parties with direct legal or contractual stakes in the dispute appear here. Community and social media are <em>not</em> a party — see §8 Social Narrative.</p>
+    <div class="grid3">
+      <div class="card">
+        <span class="badge b-party-a">Party A — Franchisor</span>
+        <h3 style="margin-top:8px">Bricks &amp; Minifigs (BAM Corporate)</h3>
+        <p><strong>Role:</strong> US franchise chain operating as franchisor; corporate policy-maker; holder of franchise agreements; filed Utah civil lawsuits; controls brand and post-takeover store assets.</p>
+        <p><strong>Primary claims:</strong> The consignment was unauthorized under franchise rules; BAM is not a party to any agreement with the Mansells; Law-Gorman's misconduct was individual, not corporate; collection value is $95,000–$100,000, not $200,000.</p>
+        <p><strong>Legal posture:</strong> Plaintiff in Utah civil suits (defamation, RICO, stalking); obtained TRO; issued 4+ public statements.</p>
+        <p><strong>Source basis:</strong> 4 primary corporate documents [S1–S4] — well-documented, but official documents are not automatically treated as truth.</p>
+      </div>
+      <div class="card">
+        <span class="badge b-party-b">Party B — Claimants</span>
+        <h3 style="margin-top:8px">Bryan &amp; Warren Mansell</h3>
+        <p><strong>Role:</strong> Warren Mansell is the collection owner (father); Bryan Mansell is the primary spokesperson and external claimant, and named defendant in BAM's Utah lawsuit.</p>
+        <p><strong>Primary claims:</strong> Collection was consigned, not sold; items were never fully returned or paid for; BAM Corporate, having taken over the store, bears liability for remaining inventory; the true value exceeds BAM's stated figures.</p>
+        <p><strong>Legal posture:</strong> Seeking return of collection and/or full compensation; named defendant in BAM's Utah lawsuits.</p>
+        <p><strong>Source basis:</strong> Primarily media reporting [S5], podcast [S7], community coverage [S8]. Fewer primary documents than Party A.</p>
+      </div>
+      <div class="card">
+        <span class="badge b-party-c">Party C — Franchisee</span>
+        <h3 style="margin-top:8px">Chrystal Law-Gorman</h3>
+        <p><strong>Role:</strong> Former operator of the Salem/Keizer BAM franchise; the person who entered the arrangement with the Mansells; her actions are central to liability attribution but her interests are distinct from the Mansells'.</p>
+        <p><strong>Primary claims:</strong> Challenges BAM's account of the franchise termination and handover process; disputes that her liability is as complete as BAM contends; maintains that corporate responsibility at the handover stage should not be ignored.</p>
+        <p><strong>Legal posture:</strong> Has her own separate litigation against BAM; named in dispute by both BAM and by community coverage. Her liability and the Mansells' claims are legally distinct — do not merge.</p>
+        <p><strong>Source basis:</strong> Extremely thin. GoFundMe-type statements [S9] and secondary legal filings [S10]. Her own perspective is the largest documented gap in this dossier.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 5b: STAKEHOLDER MAP ─── -->
+  <section id="stakeholders">
+    <h2>§5b — Stakeholder Map (All Named Actors)</h2>
+    <div class="asymmetry-banner">
+      <strong>Rule applied:</strong> Every actor named in the timeline must appear here. Secondary actors (executives, YouTuber, other franchisees) are included even if they are not primary parties.
+    </div>
+    <div style="overflow-x:auto;margin-top:14px">
+    <table class="source-table">
+      <thead><tr><th>Actor</th><th>Party</th><th>Role</th><th>Key Claims</th><th>Response Status</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Bryan Mansell</strong></td>
+          <td><span class="badge b-party-b">B</span></td>
+          <td>Primary spokesperson; acts for Warren; named BAM defendant</td>
+          <td>Consignment occurred; collection never fully returned; BAM owes compensation [S5, S7]</td>
+          <td>Active — pursuing claim; subject to TRO (exact terms unknown)</td>
+        </tr>
+        <tr>
+          <td><strong>Warren Mansell</strong></td>
+          <td><span class="badge b-party-b">B (owner)</span></td>
+          <td>Collection owner; principal whose property is at stake</td>
+          <td>Represented through Bryan; collection described as lifetime accumulation [S5, S7]</td>
+          <td>Not directly quoted in major media; limited public presence</td>
+        </tr>
+        <tr>
+          <td><strong>Chrystal Law-Gorman</strong></td>
+          <td><span class="badge b-party-c">C</span></td>
+          <td>Former Salem/Keizer franchisee; made the arrangement with Mansells</td>
+          <td>Disputes BAM's account of termination and handover [S9, S10]</td>
+          <td><strong>Severely under-documented.</strong> First-person account nearly absent from public record — major sourcing gap.</td>
+        </tr>
+        <tr>
+          <td><strong>BAM Corporate</strong></td>
+          <td><span class="badge b-party-a">A</span></td>
+          <td>Franchisor; plaintiff in Utah suits; best-documented party</td>
+          <td>Unauthorized consignment; offered return &amp; compensation; $200K is promotional [S1–S4]</td>
+          <td>Actively communicating — 4 primary documents on record</td>
+        </tr>
+        <tr>
+          <td><strong>Reckless Ben / Ben Schneider</strong></td>
+          <td><span class="badge b-social">Social/Advocate</span></td>
+          <td>YouTuber; traveled to UT HQ; physically confronted executives; arrested</td>
+          <td>BAM covering up theft; confrontation was accountability journalism [S8]</td>
+          <td>Arrested in Utah; named civil defendant; active on YouTube</td>
+        </tr>
+        <tr>
+          <td><strong>Brandon Best &amp; Joshua Johnson</strong></td>
+          <td><span class="badge b-party-a">BAM (sep.)</span></td>
+          <td>Named BAM executives; separated June 4, 2026 [S4]</td>
+          <td>No direct public statements found post-separation</td>
+          <td>Silent post-separation; pre-separation role not fully documented publicly</td>
+        </tr>
+        <tr>
+          <td><strong>Sacramento BAM franchisee</strong></td>
+          <td><span class="badge b-inference">Collateral</span></td>
+          <td>Unrelated CA franchise owner; received death threats; temporarily closed store</td>
+          <td>Store temporarily closed due to threats [S2, S5]</td>
+          <td>Collateral harm victim; no public statement attributed</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 6: ISSUE MATRIX ─── -->
+  <section id="matrix">
+    <h2>§6 — Issue Matrix</h2>
+
+    <div class="issue-card">
+      <h3>Issue 1: Did BAM Corporate authorize the consignment?</h3>
+      <div class="issue-row"><span class="issue-label">BAM's claim</span><span>Consignment prohibited by franchise rules; Law-Gorman acted outside authority; no corporate obligation to Mansells. [S1–S3]</span></div>
+      <div class="issue-row"><span class="issue-label">Mansells' claim</span><span>Arrangement happened in BAM-branded store with BAM promotional materials; apparent authority may apply. [S5, S7]</span></div>
+      <div class="issue-row"><span class="issue-label">Confirmed</span><span>BAM franchise rules prohibiting consignment confirmed. Arrangement's existence confirmed. Constructive-notice question unresolved.</span></div>
+      <div class="issue-row"><span class="issue-label">Missing</span><span>Internal BAM–Law-Gorman communications acknowledging the collection; corporate sign-off on the promotional use.</span></div>
+      <div class="issue-row"><span class="issue-label">Social</span><span>"BAM knew and looked the other way" [social — unverified]</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> We write "BAM claims the consignment was unauthorized" — not "the consignment was unauthorized." Authorization is a legal conclusion not yet made by any court.</div>
+    </div>
+
+    <div class="issue-card">
+      <h3>Issue 2: Where is the collection physically right now?</h3>
+      <div class="issue-row"><span class="issue-label">BAM's claim</span><span>~25 boxes ($2–5K) identified post-takeover; remainder accounted for through Law-Gorman's tenure sales. [S2, S3]</span></div>
+      <div class="issue-row"><span class="issue-label">Mansells' claim</span><span>More items unaccounted; BAM's reconciliation inadequate. [S5, S7]</span></div>
+      <div class="issue-row"><span class="issue-label">Confirmed</span><span>Handover occurred Nov 2024; BAM offered some return. No public item-level reconciliation exists.</span></div>
+      <div class="issue-row"><span class="issue-label">Missing</span><span>Item-level reconciliation table; inventory audit at handover; Law-Gorman's own count.</span></div>
+      <div class="issue-row"><span class="issue-label">Social</span><span>"BAM still has the collection and is hiding it" [social — unverified]</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> We write "physical location of remaining items is unknown" — not "BAM has the collection" nor "BAM returned everything." No verified item-level accounting exists in public sources.</div>
+    </div>
+
+    <div class="issue-card">
+      <h3>Issue 3: True value of the collection</h3>
+      <div class="issue-row"><span class="issue-label">BAM (May 28)</span><span>$60,000–$80,000 [S2]</span></div>
+      <div class="issue-row"><span class="issue-label">BAM (June 4)</span><span>Revised to $95,000–$100,000; calls $200K "promotional" [S3] — shift of $35–40K is a confirmed fact.</span></div>
+      <div class="issue-row"><span class="issue-label">Community</span><span>~$200K [S8, S9] — retail-price methodology, unverified.</span></div>
+      <div class="issue-row"><span class="issue-label">Missing</span><span>Independent professional appraisal; Law-Gorman's own valuation; original acquisition records.</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> Never write "$200,000 collection" as fact. Write "community-cited ~$200K [social]" and "BAM's revised estimate $95–100K [attributed, June 4]." Always note the valuation shift.</div>
+    </div>
+
+    <div class="issue-card">
+      <h3>Issue 4: Police conduct — appropriate or improper?</h3>
+      <div class="issue-row"><span class="issue-label">BAM/official</span><span>Law enforcement responded appropriately to physical threats and court-order violations. [S3, S6]</span></div>
+      <div class="issue-row"><span class="issue-label">Community claim</span><span>Oregon police mishandled original dispute; Utah police aided BAM; bodycam footage selectively released. [S8, S9]</span></div>
+      <div class="issue-row"><span class="issue-label">Confirmed</span><span>Police interactions in OR and UT occurred. TRO issued. Arrest made in UT. Bodycam controversy in public record.</span></div>
+      <div class="issue-row"><span class="issue-label">Missing</span><span>Full bodycam footage; oversight findings; formal complaint outcomes.</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> We write "procedural disputes and community questions about police conduct" — not "police corruption confirmed." Available materials are insufficient to establish unlawful conduct.</div>
+    </div>
+
+    <div class="issue-card">
+      <h3>Issue 5: Ben Schneider's actions — advocacy or harassment?</h3>
+      <div class="issue-row"><span class="issue-label">Schneider framing</span><span>Physical presence at BAM HQ was accountability journalism. [S8]</span></div>
+      <div class="issue-row"><span class="issue-label">BAM framing</span><span>Physical confrontation at offices and residences constitutes civil stalking; TRO warranted. [S3, S4]</span></div>
+      <div class="issue-row"><span class="issue-label">Confirmed</span><span>Schneider traveled to Utah, was arrested, is named civil defendant, TRO obtained.</span></div>
+      <div class="issue-row"><span class="issue-label">Missing</span><span>TRO text; criminal complaint specifics; Schneider's detailed account of each visit.</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> We write both "raised public pressure" and "created independent legal exposure" — both are evidenced. We do not resolve advocacy-vs-harassment; that is for courts.</div>
+    </div>
+
+    <div class="issue-card">
+      <h3>Issue 6: Was the brand-wide boycott/harassment of other stores justified?</h3>
+      <div class="issue-row"><span class="issue-label">Community</span><span>Brand-wide accountability warranted when corporate governance failed. [S8, S9]</span></div>
+      <div class="issue-row"><span class="issue-label">Counter</span><span>Individual franchise owners are independent small businesses unrelated to Salem events; death threats unjustifiable. [S2, S5]</span></div>
+      <div class="issue-row"><span class="issue-label">Confirmed</span><span>Sacramento store closed due to threats. BAM condemned harassment of unrelated stores.</span></div>
+      <div class="editorial-box"><strong>Editorial handling:</strong> We distinguish brand accountability (legitimate) from threats to unrelated franchise owners (not defensible). These are treated as two separate issues regardless of the underlying cause.</div>
+    </div>
+
+  </section>
+
+  <!-- ─── SECTION 7: SOURCE REGISTER ─── -->
+  <section id="sources">
+    <h2>§7 — Source Register</h2>
+    <p class="muted small" style="margin-bottom:10px">All claims in this dossier reference source IDs from this register. Every source has a sequential ID, type, live hyperlink (where available), and reliability note.</p>
+    <div style="overflow-x:auto">
+    <table class="source-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title / Publisher</th>
+          <th>Date</th>
+          <th>Type</th>
+          <th>Reliability Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sid">S1</td>
+          <td><a href="https://www.bricksandminifigs.com/news/salem-or-community-note-may-2026" target="_blank" rel="noopener">BAM — "A Note to Our Community about the Bricks &amp; Minifigs Salem, OR Store"</a></td>
+          <td>2026-05-21</td>
+          <td>Official statement</td>
+          <td>Primary corporate statement; URL approximate — verify against BAM official site. Quoted in downstream media.</td>
+        </tr>
+        <tr>
+          <td class="sid">S2</td>
+          <td><a href="https://www.bricksandminifigs.com/news/clarity-and-resolution-may-2026" target="_blank" rel="noopener">BAM — "Bricks &amp; Minifigs Salem, Oregon: Clarity and Resolution"</a></td>
+          <td>2026-05-28</td>
+          <td>Official statement</td>
+          <td>Source of $60–80K valuation figure; source of initial consignment-denial framing. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S3</td>
+          <td><a href="https://www.bricksandminifigs.com/news/salem-store-timeline-june-2026" target="_blank" rel="noopener">BAM — "Salem Store Timeline"</a></td>
+          <td>2026-06-04</td>
+          <td>Official statement / primary record</td>
+          <td>Source of revised $95–100K figure; three-book accounting allegation against Law-Gorman; POS data claim ($52K+). URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S4</td>
+          <td><a href="https://www.bricksandminifigs.com/news/salem-store-closure-june-2026" target="_blank" rel="noopener">BAM — "Parts Ways with Salem Franchise Owners / Salem Store Permanently Closed"</a></td>
+          <td>2026-06-04</td>
+          <td>Official statement</td>
+          <td>Confirms separation of Best and Johnson; store closure. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S5</td>
+          <td><a href="https://katu.com/news/local/kaiser-lego-collection-dispute-bricks-minifigs-lawsuits" target="_blank" rel="noopener">KATU News — "Keizer LEGO collection dispute sparks multiple lawsuits, store closure"</a></td>
+          <td>2026-06 (approx.)</td>
+          <td>Local / mainstream media</td>
+          <td>Portland ABC affiliate; local reporting on Oregon side of dispute. Primary source of Mansell family's on-record statements.</td>
+        </tr>
+        <tr>
+          <td class="sid">S6</td>
+          <td><a href="https://www.sltrib.com/news/2026/05/youtuber-arrested-bricks-minifigs-utah" target="_blank" rel="noopener">Salt Lake Tribune — "YouTuber arrested in Utah in Bricks &amp; Minifigs LEGO debacle"</a></td>
+          <td>2026-05/06</td>
+          <td>Mainstream media</td>
+          <td>Utah-based newspaper; covers Schneider arrest, Utah lawsuits, and TRO. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S7</td>
+          <td><a href="https://www.collectorsweekly.com/articles/the-lego-consignment-case" target="_blank" rel="noopener">Collectors Weekly — Podcast / Article: Bryan Mansell interview on LEGO collection dispute</a></td>
+          <td>2025-04-16</td>
+          <td>Specialist media / podcast</td>
+          <td>Key primary vehicle for Mansell family's account entering public record. URL approximate; verify against Collectors Weekly archive.</td>
+        </tr>
+        <tr>
+          <td class="sid">S8</td>
+          <td><a href="https://www.youtube.com/@RecklessBen" target="_blank" rel="noopener">Reckless Ben (Ben Schneider) — YouTube channel coverage of BAM dispute</a></td>
+          <td>2026-05 onward</td>
+          <td>Social / commentary</td>
+          <td>Primary vehicle for community mobilization; high-reach but first-person advocacy perspective. Must not be treated as neutral reporting.</td>
+        </tr>
+        <tr>
+          <td class="sid">S9</td>
+          <td><a href="https://www.gofundme.com/bricksminifigs-lawgorman" target="_blank" rel="noopener">Chrystal Law-Gorman — GoFundMe / public statement</a></td>
+          <td>2024–2026</td>
+          <td>Social / primary (self-published)</td>
+          <td>One of very few public records of Law-Gorman's own perspective. Self-published; not independently verified. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S10</td>
+          <td><a href="https://www.oregonlive.com/news/2026/lego-bricks-minifigs-oregon-lawsuit" target="_blank" rel="noopener">Oregon Live / The Oregonian — coverage of Law-Gorman separate litigation</a></td>
+          <td>2026 (approx.)</td>
+          <td>Local media</td>
+          <td>Oregon-side coverage. Law-Gorman's independent litigation against BAM reported here. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S11</td>
+          <td><a href="https://www.ksl.com/article/51000000/bricks-minifigs-youtuber-utah-arrest" target="_blank" rel="noopener">KSL.com (Utah) — Coverage of Utah arrest and civil proceedings</a></td>
+          <td>2026-05/06</td>
+          <td>Local media (Utah)</td>
+          <td>Utah-local news outlet; covers arrest, court proceedings. URL approximate.</td>
+        </tr>
+        <tr>
+          <td class="sid">S12</td>
+          <td><span class="muted">Utah Third District Court — TRO and civil complaint filings (BAM v. Schneider et al.)</span></td>
+          <td>2026-05-27/28</td>
+          <td>Primary record / court filing</td>
+          <td><strong>Not publicly confirmed as obtained.</strong> This dossier has not independently verified TRO text or complaint document. Existence confirmed via media reporting [S6, S11] but primary document not reviewed.</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted small" style="margin-top:10px">⚠ Note on URLs: Several source URLs are approximate reconstructions based on publisher and title. All external links open in new tab. Readers should verify against publishers' own archives. Where primary court documents are unavailable, claims relying on them are labeled [attributed] or [unknown] rather than [confirmed].</p>
+  </section>
+
+  <!-- ─── SECTION 8: SOCIAL NARRATIVE ─── -->
+  <section id="social">
+    <h2>§8 — Social Narrative</h2>
+    <div class="card" style="border-left: 4px solid #7c3aed;">
+      <span class="badge b-social">social — labeled separately from confirmed facts</span>
+      <h3 style="margin-top:10px">Dominant Community Narrative</h3>
+      <p>The dominant social narrative, as visible on Reddit, YouTube, and LEGO community forums, is: <em>"A franchise stole an elderly man's lifetime LEGO collection worth $200,000, police did nothing, so the community held them accountable."</em></p>
+      <div class="divider"></div>
+      <h3>What evidence supports this narrative</h3>
+      <ul>
+        <li>A collection genuinely did pass through the Salem store without full payment — the gap is real. [confirmed — S3, S5]</li>
+        <li>BAM's handling was inconsistent over time (valuation shift, delay in addressing the matter). [confirmed — S2, S3]</li>
+        <li>The store and two executives were eventually separated — consistent with acknowledgment of some failure. [confirmed — S4]</li>
+      </ul>
+      <div class="divider"></div>
+      <h3>What evidence complicates or contradicts this narrative</h3>
+      <ul>
+        <li>The $200,000 figure is a community-circulated estimate, not an independently verified appraisal. BAM disputes it explicitly. [disputed — S3]</li>
+        <li>"Elderly man" framing: Warren Mansell is the owner, but Bryan Mansell is the active claimant. The conflation simplifies the parties.</li>
+        <li>"Police did nothing" is contested; law enforcement responses occurred in both Oregon and Utah, and their appropriateness is disputed — not proven to be negligent or corrupt. [disputed]</li>
+        <li>Death threats against an unrelated Sacramento franchise owner are not defensible accountability — they represent community anger detaching from the underlying grievance. [confirmed harm — S2, S5]</li>
+        <li>Ben Schneider's arrest and the TRO suggest his methods crossed legal boundaries that community framing ignores. [confirmed — S6, S11]</li>
+      </ul>
+      <div class="divider"></div>
+      <h3>Virality caution</h3>
+      <p class="muted">The case's high emotional resonance (family heirloom, elderly parent, David-vs.-Goliath) makes community claims particularly prone to confidence inflation. Viral reach does not establish factual accuracy. Anonymous Reddit and YouTube comments are <strong>not treated as corroboration</strong> in this dossier.</p>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 9: OPEN QUESTIONS ─── -->
+  <section id="openq">
+    <h2>§9 — Open Questions</h2>
+    <p class="muted small" style="margin-bottom:14px">These are questions this dossier cannot answer. Each is tagged [unknown] (no public evidence) or [inference] (reasoned gap from available evidence).</p>
+
+    <div class="oq-item">
+      <h4>1. What does the TRO text actually say about the Mansells' permitted speech? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>Could prohibit Bryan from discussing the case publicly; directly changes the power balance between parties. A broad TRO would silence the most effective pressure on BAM.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>Primary TRO text from Utah Third District Court [S12 — not yet confirmed obtained].</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>2. Where is the LEGO collection physically located right now? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>Physical custody determines leverage in any settlement and who has conversion liability post-November 2024.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>Court-ordered inventory audit; BAM warehouse/transfer records post-Nov 2024; Law-Gorman deposition.</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>3. Does BAM have a reconciliation table showing item-by-item custody acknowledgment? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>No item-level reconciliation is public; without it, the financial gap between parties cannot be closed even in principle.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>BAM internal POS/inventory export; Law-Gorman's version; original delivery manifest vs. current inventory.</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>4. What value did Law-Gorman arrive at during her own inventory count? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>Her figure is the most conspicuously absent data point — the only number that could bridge or widen the gap between BAM's $95–100K and community's $200K.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>Law-Gorman deposition or any document she produced listing the collection's contents and value.</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>5. Did Bryan Mansell respond in writing to BAM's June 4 counter-offer? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>Written acceptance would indicate a settlement path; rejection or silence means litigation continues. Either outcome changes the dispute trajectory significantly.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>Written response from Bryan or counsel; subsequent court filings indicating settlement status.</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>6. What primary court documents exist for the Utah RICO filings and TRO orders? <span class="badge b-unknown">unknown</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>Media characterizes suits as RICO, defamation, civil stalking — but without primary complaints, specific legal theories, named defendants, and claimed damages are unverified. RICO has a high pleading standard; the specifics matter.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>PACER or Utah state court docket for BAM lawsuits filed ~May 27–28, 2026; complaint text; TRO order.</span></div>
+    </div>
+
+    <div class="oq-item">
+      <h4>7. Did BAM's franchise termination of Law-Gorman affect its legal exposure to the Mansells? <span class="badge b-inference">inference</span></h4>
+      <div class="oq-meta"><span class="oq-meta-label">Why it matters:</span><span>One reading of the evidence: by taking over the store, BAM assumed control of remaining assets — potentially including unclaimed Mansell items. If so, post-takeover BAM may bear liability independent of the original unauthorized-consignment defense.</span></div>
+      <div class="oq-meta"><span class="oq-meta-label">Evidence needed:</span><span>Franchise agreement termination clause; inventory transfer documents dated post-Nov 14, 2024; internal BAM communications about known third-party property at time of takeover.</span></div>
+    </div>
+
+  </section>
+
+  <!-- ─── SECTION 10: FORWARD SCENARIOS ─── -->
+  <section id="scenarios">
+    <h2>§10 — Forward Scenarios</h2>
+    <p class="muted small" style="margin-bottom:14px">Plausible future outcomes based on available evidence. All labeled [inference] or [unknown]. This section is separate from Open Questions (§9).</p>
+    <div class="grid2">
+
+      <div class="fs-card">
+        <span class="badge b-inference">inference</span>
+        <h3 style="margin-top:8px">Scenario A: Partial settlement between Bryan and BAM</h3>
+        <p>BAM returns all identified remaining Star Wars items plus a monetary settlement for unaccounted items. Bryan's role as defendant in the Utah lawsuit is resolved or withdrawn. This is consistent with BAM's June 4 offer and is the path of least legal cost for both parties.</p>
+        <p class="muted small">This would NOT resolve Ben Schneider's separate criminal and civil exposure, nor Law-Gorman's independent litigation against BAM.</p>
+      </div>
+
+      <div class="fs-card">
+        <span class="badge b-inference">inference</span>
+        <h3 style="margin-top:8px">Scenario B: Liability concentrates on Law-Gorman</h3>
+        <p>Courts accept BAM's unauthorized-consignment defense; primary liability for the missing collection attaches to Law-Gorman personally (fraud, breach of fiduciary duty, accounting misconduct). BAM's post-takeover exposure is limited to items demonstrably in their control post-November 2024.</p>
+        <p class="muted small">This is consistent with BAM's legal strategy; its probability depends heavily on the apparent authority question.</p>
+      </div>
+
+      <div class="fs-card">
+        <span class="badge b-unknown">unknown</span>
+        <h3 style="margin-top:8px">Scenario C: Court finds BAM had constructive notice — corporate liability widens</h3>
+        <p>If discovery reveals that BAM Corporate received communications acknowledging the collection, or if the promotional use of BAM branding is deemed sufficient to establish apparent authority, corporate liability could expand significantly beyond the $95–100K range currently framed by BAM.</p>
+        <p class="muted small">No current public evidence confirms this path, but the theoretical basis exists in franchise law.</p>
+      </div>
+
+      <div class="fs-card">
+        <span class="badge b-inference">inference</span>
+        <h3 style="margin-top:8px">Scenario D: Community conflict continues independently of case resolution</h3>
+        <p>Even if Bryan Mansell settles with BAM, the Reckless Ben criminal/civil proceedings, BAM brand damage, and community anger may continue as separate and largely self-sustaining events. The case has generated sufficient community investment that its social media life may outlast the legal case itself.</p>
+        <p class="muted small">Collateral damage to unrelated franchises would likely continue in this scenario.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── SECTION 11: PUBLICATION CAVEATS ─── -->
+  <section id="caveats">
+    <h2>§11 — Publication Caveats</h2>
+    <div class="caveat-section">
+
+      <h3>Response status of each party</h3>
+      <p><strong>BAM Corporate:</strong> 4 primary documents on record (May 21, May 28, June 4 × 2) — best-documented party. [S1–S4]</p>
+      <p><strong>Bryan Mansell:</strong> On-record via KATU [S5] and Collectors Weekly podcast [S7]. No primary court filing independently confirmed for this dossier.</p>
+      <p><strong>Warren Mansell:</strong> Not directly quoted in any confirmed source; perspective reaches the record only through Bryan.</p>
+      <p><strong>Chrystal Law-Gorman:</strong> GoFundMe-type statement [S9] and separate litigation [S10] are the only thin records. <strong>Her first-person account is the single largest evidentiary gap in this dossier.</strong> Any liability analysis without her account is structurally incomplete.</p>
+      <p><strong>Best &amp; Johnson:</strong> No public statements after June 4 separation. <strong>Reckless Ben:</strong> YouTube advocacy-framed [S8], not neutral reporting.</p>
+
+      <div class="divider"></div>
+      <h3>What would upgrade "disputed" → "confirmed"</h3>
+      <ul>
+        <li><strong>Collection location:</strong> Court-ordered item-level inventory audit by independent auditor.</li>
+        <li><strong>True value:</strong> Independent professional appraisal at time of consignment, using defined methodology.</li>
+        <li><strong>BAM's constructive knowledge:</strong> Internal BAM–Law-Gorman communications acknowledging the collection pre-takeover.</li>
+        <li><strong>TRO scope:</strong> Primary text of Utah TRO [S12 — not yet obtained].</li>
+        <li><strong>Police conduct:</strong> Bodycam footage; oversight body review.</li>
+        <li><strong>Settlement status:</strong> Written response from Bryan to BAM's June 4 offer.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <h3>What this dossier lacks</h3>
+      <ul>
+        <li>Primary Utah court documents (complaint, TRO text, subsequent orders).</li>
+        <li>Direct statement from Chrystal Law-Gorman or Warren Mansell in their own words.</li>
+        <li>Independent appraisal of the collection; BAM inventory records post-Nov 2024.</li>
+        <li>Bryan Mansell's response to the June 4 BAM offer; Best &amp; Johnson's roles pre-separation.</li>
+      </ul>
+
+      <div class="divider"></div>
+      <h3>General disclaimer</h3>
+      <p>Independent research dossier only — not a court ruling, legal opinion, or advice of any kind. All reputational claims are sourced and labeled by evidence tier. The dispute is active; all conclusions subject to revision as new information emerges.</p>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>Independent investigation dossier — not legal advice, not a court finding. Round 3 | Last updated: 2026-06-08</p>
+  <p style="margin-top:4px">All external links open in new tab. Source URLs marked approximate should be verified against publishers' own archives.</p>
+</footer>
+
+<script>
+  // Smooth scrolling for nav links
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+  // Highlight active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a[href^="#"]');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.style.borderBottomColor = '');
+        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (active) { active.style.color = '#e6edf3'; active.style.borderBottomColor = '#6ea8fe'; }
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
