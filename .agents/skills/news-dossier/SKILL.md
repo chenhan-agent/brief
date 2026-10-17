@@ -202,8 +202,8 @@ Render evidence labels as soft, high-contrast, readable inline badges:
 - Single `.html` file, no build step required
 - All CSS inline in `<style>` tag
 - All JS inline in `<script>` tag at bottom
-- No images unless base64 embedded
-- File size target: under 200KB
+- No base64 images; keep repo lightweight, clean, and text-focused
+- File size target: under 100KB
 
 #### HTML Template
 
