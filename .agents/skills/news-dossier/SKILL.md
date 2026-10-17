@@ -136,11 +136,15 @@ For each unresolved issue:
 **Default output is always a self-contained HTML file** — no external CDN, no frameworks, no dependencies. The file must work offline and be publishable directly to GitHub Pages.
 
 Save the file as: `YYYY-MM-[event-slug].html` — time prefix + event name only, no "dossier" suffix.
+**Date Convention (Publication Date for Files, Event Date for Content):**
+- The file prefix `YYYY-MM` represents the **publication / research date** (when this dossier was produced), keeping your file repository naturally chronological according to your research timeline.
+- The actual **news event date** (when the incident happened or was announced) is documented inside the content via the 5W1H (When) card, Timeline, and Meta pills.
+- If generating slides (Marp), save as `YYYY-MM-[event-slug]-slides.md` and compile to `YYYY-MM-[event-slug]-slides.html` via `npx @marp-team/marp-cli`.
 
 Examples:
-- `2026-06-bam-lego.html`
-- `2026-06-korea-ballot-shortage.html`
-- `2025-11-openai-board-crisis.html`
+- `2026-10-kioxia-sandisk-investment.html` (Slides: `2026-10-kioxia-sandisk-investment-slides.html` · Event: 2026-08-27)
+- `2026-06-korea-ballot-shortage.html` (Slides: `2026-06-korea-ballot-shortage-slides.html`)
+- `2026-06-bam-lego-dossier.html`
 
 #### Language requirement
 
@@ -157,40 +161,37 @@ Rules:
 
 The page must include all of these sections as navigable tabs or anchor links, **in this order**:
 
-0. **Reader Orientation Primer** — 2–4 plain-language sentences for zero-knowledge readers, appears at the very top before the nav or executive summary
-1. **Executive Summary** — 3–5 sentences, confirmed facts only
+0. **5W1H Fast Facts Card** — 4-grid cards covering What (core event), Who (parties), When & Where (scope), Status (latest status) for zero-knowledge readers
+1. **Executive Summary** — 3–5 sentences, confirmed facts only, clear lead callout
 2. **What Is Known** — confirmed facts with inline source citations
 3. **What Is Disputed** — competing claims, speaker-labeled, with position-shift tracking if present
-4. **Timeline** — chronological, with WHY IT MATTERS note per entry and confidence badges; render as a vertical timeline with a connecting line between entries
-5. **Stakeholder Map** — table or cards per actor; flag sourcing asymmetry if one party is better documented; ALL named actors from the timeline must appear here
-6. **Issue Matrix** — structured table per contested point, including editorial_handling field
-7. **Source Register** — numbered list (S1, S2, S3…) with source type, live hyperlinks (not bare URLs), and reliability notes
-8. **Social Narrative** — separated from facts, with caveat label
-9. **Open Questions** — numbered list, each tagged [unknown] or [inference], with one-line "why unresolved" explanation and evidence needed
-10. **Forward Scenarios** — 2–4 plausible future outcomes, each labeled inference or unknown
-11. **Publication Caveats** — full warnings section (not just a footer note): data limits, sourcing bias, what would change disputed→confirmed, who has not responded
-
-**Sections 9 and 10 are both required and must be separate.** Open Questions covers what is currently unknown; Forward Scenarios covers what might happen next. Never merge them into one section.
+4. **Timeline** — chronological, with WHY IT MATTERS note per entry and confidence badges; render as a clean vertical timeline
+5. **Issue Matrix** — side-by-side comparison cards per contested point, including objective evidence, missing evidence, and editorial_handling safe wording
+6. **Stakeholder Map** — clean table per actor; flag sourcing asymmetry if one party is better documented
+7. **Social Narrative** — separated from facts, with caveat label
+8. **Open Questions** — numbered list, each tagged [unknown] or [inference], with one-line "why unresolved" explanation and evidence needed
+9. **Source Register** — numbered list (S1, S2, S3…) with source type, live hyperlinks (not bare URLs), and publisher / date
+10. **Forward Scenarios & Caveats** — full warnings section: data limits, sourcing bias, what would change disputed→confirmed, who has not responded
 
 #### Evidence Badge Colors
 
-Render evidence labels as colored inline badges:
+Render evidence labels as soft, high-contrast, readable inline badges:
 
-| Label | Color |
+| Label | Color (Light Theme) |
 |---|---|
-| confirmed | green (`#052e16` bg / `#34d399` text) |
-| attributed | blue (`#1e3a5f` bg / `#93c5fd` text) |
-| disputed | yellow (`#451a03` bg / `#fde68a` text) |
-| social | purple (`#2d1b69` bg / `#c4b5fd` text) |
-| inference | gray (`#1e293b` bg / `#94a3b8` text) |
-| unknown | red (`#450a0a` bg / `#fca5a5` text) |
+| confirmed | green (`#ecfdf5` bg / `#065f46` text / `#a7f3d0` border) |
+| attributed | blue (`#eff6ff` bg / `#1e40af` text / `#bfdbfe` border) |
+| disputed | amber (`#fffbeb` bg / `#92400e` text / `#fde68a` border) |
+| social | purple (`#faf5ff` bg / `#6b21a8` text / `#e9d5ff` border) |
+| inference | slate (`#f8fafc` bg / `#475569` text / `#cbd5e1` border) |
+| unknown | rose (`#fff1f2` bg / `#9f1239` text / `#fecdd3` border) |
 
 #### Required HTML Elements
 
-- Dark theme (`#0f1117` background)
+- Clean Light theme (`#f8fafc` page background, `#ffffff` card surface, `#0f172a` primary text, `#334155` body text)
 - Sticky top navigation with tab/anchor links for each section
 - `<meta charset="UTF-8">` and `<meta name="viewport">`
-- `<title>` set to event name + " — Dossier"
+- `<title>` set to event name + " — Brief 新聞簡報"
 - `<meta name="description">` with 1-sentence summary
 - `last_updated` timestamp visible on page
 - Caveat footer: mark as independent research, not legal/medical advice

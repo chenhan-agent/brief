@@ -3,23 +3,423 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brief — Independent Research Dossiers</title>
+<title>Brief — 獨立研究與新聞事實梳理簡報庫</title>
+<meta name="description" content="公共爭議事件、突破性新聞與公共利益事件之結構化獨立調查簡報庫。嚴格區分已證實事實、各方爭執、社群敘事與未決問題。">
 <style>
-  :root { --bg:#0f1117; --surface:#1a1d27; --border:#2d3250; --text:#e2e8f0; --muted:#8892a4; --accent:#6c8cff; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; }
-  h1 { font-size:2rem; font-weight:800; color:var(--accent); margin-bottom:8px; }
-  p { color:var(--muted); font-size:1rem; margin-bottom:32px; }
-  .empty { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:32px 40px; text-align:center; max-width:420px; }
-  .label { font-size:.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; margin-bottom:16px; }
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-subtle: #f1f5f9;
+    --surface-hover: #f8fafc;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text: #0f172a;
+    --text-body: #334155;
+    --text-muted: #64748b;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --accent-light: #eff6ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; color: var(--accent-hover); }
+
+  /* ── Header ── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 20px 36px;
+    text-align: center;
+  }
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid #bfdbfe;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    padding: 3px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .tagline {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── Main Container ── */
+  main {
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 36px 20px 80px;
+    flex: 1;
+  }
+
+  /* ── Search & Filter Controls ── */
+  .controls-bar {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .search-wrap {
+    flex: 1;
+    min-width: 240px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 9px 14px 9px 36px;
+    font-size: .9rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--text);
+    outline: none;
+    transition: all .15s ease;
+  }
+  .search-input:focus {
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: .88rem;
+    pointer-events: none;
+  }
+  .filter-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: .82rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .filter-btn:hover {
+    background: var(--surface-subtle);
+    color: var(--text);
+  }
+  .filter-btn.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* ── Article Cards ── */
+  .brief-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .brief-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    transition: all .15s ease;
+  }
+  .brief-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .card-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .card-date {
+    font-size: .78rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .card-tag {
+    font-size: .76rem;
+    color: var(--text-muted);
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  .card-title a { color: var(--text); }
+  .card-title a:hover { color: var(--accent); text-decoration: none; }
+  .card-desc {
+    font-size: .93rem;
+    color: var(--text-body);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  /* ── Action Buttons ── */
+  .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: .86rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all .15s ease;
+    text-decoration: none;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1px solid var(--accent);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+    text-decoration: none;
+  }
+  .btn-secondary {
+    background: var(--surface-subtle);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover {
+    background: #e2e8f0;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  /* ── Empty State ── */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+  .empty-state p { font-size: 1rem; margin-top: 8px; }
+
+  /* ── Footer ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 36px 20px;
+    text-align: center;
+    font-size: .84rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  @media(max-width: 640px) {
+    header { padding: 36px 16px 24px; }
+    h1 { font-size: 1.75rem; }
+    .brief-card { padding: 18px; }
+    .card-title { font-size: 1.15rem; }
+    .controls-bar { flex-direction: column; align-items: stretch; }
+  }
 </style>
 </head>
 <body>
-<div class="empty">
-  <div class="label">Independent Research</div>
-  <h1>Brief</h1>
-  <p>Structured public-interest dossiers.<br>Separating facts, claims, and open questions.</p>
-  <p style="font-size:.8rem;color:#4b5563">First brief coming soon.</p>
-</div>
+
+<header>
+  <div class="brand-badge">📋 Public Interest Research</div>
+  <h1>Brief 新聞事實簡報庫</h1>
+  <p class="tagline">結構化公共利益調查簡報 · 嚴格區隔客觀確認事實、各方爭執、社群敘事與關鍵未決問題</p>
+</header>
+
+<main>
+  <!-- 搜尋與篩選列 -->
+  <div class="controls-bar">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="搜尋簡報標題、主題或關鍵字...">
+    </div>
+    <div class="filter-pills">
+      <button class="filter-btn active" data-category="all">全部 (All)</button>
+      <button class="filter-btn" data-category="tech">科技半導體</button>
+      <button class="filter-btn" data-category="politics">政治選務</button>
+      <button class="filter-btn" data-category="business">商業法務</button>
+    </div>
+  </div>
+
+  <!-- 簡報卡片列表 -->
+  <div class="brief-list" id="briefList">
+
+    <!-- Card 0: 鎧俠與閃迪 5 兆日圓增產記憶體調查 -->
+    <article class="brief-card" data-category="tech" data-search="鎧俠 閃迪 5兆日圓 記憶體 增產 Kioxia SanDisk BiCS FLASH 3D NAND 北上 四日市 AI 資料中心 半導體">
+      <div class="card-header">
+        <span class="card-date">2026-10-17</span>
+        <span class="card-tag">科技 · 半導體記憶體產業</span>
+        <span class="card-tag">事件：2026-08-27</span>
+      </div>
+      <h2 class="card-title">
+        <a href="2026-10-kioxia-sandisk-investment.html">鎧俠 × 閃迪未來 6 年 5 兆日圓增產記憶體調查</a>
+      </h2>
+      <p class="card-desc">
+        美日半導體雙雄鎧俠（Kioxia）與閃迪（SanDisk）宣布至 2032 財年共同投資逾 5 兆日圓（約 310 億美元）擴建 3D NAND 晶圓廠。其中 1.8 兆日圓重兵投入岩手縣北上 K3 廠，鎖定 AI 資料中心次世代高堆疊快閃記憶體。
+      </p>
+      <div class="card-actions">
+        <a href="2026-10-kioxia-sandisk-investment.html" class="btn btn-primary">📄 閱讀完整調查報告</a>
+        <a href="2026-10-kioxia-sandisk-investment-slides.html" class="btn btn-secondary">🖥️ 瀏覽投影片簡報 (Slides)</a>
+      </div>
+    </article>
+
+    <!-- Card 1: 2026 南韓地方選舉選票短缺事件 -->
+    <article class="brief-card" data-category="politics" data-search="2026 南韓地方選舉 選票短缺 首爾 仁川 盧泰岳 李在明 投票所 夾鏈袋 korea ballot shortage">
+      <div class="card-header">
+        <span class="card-date">2026-06-08</span>
+        <span class="card-tag">政治 · 選務行政調查</span>
+        <span class="card-tag">南韓首爾、仁川</span>
+      </div>
+      <h2 class="card-title">
+        <a href="2026-06-korea-ballot-shortage.html">2026 南韓地方選舉：選票短缺事件調查簡報</a>
+      </h2>
+      <p class="card-desc">
+        南韓地方選舉期間，全國逾 50 個投票所發生選票不足、22 處被迫中斷投票。中央選舉管理委員會（NEC）承認事先僅按約半數選民列印選票且無應急手冊。NEC 委員長盧泰岳辭職，總統李在明下令檢警調查，引發逾 6,000 人集會要求重選並阻擾票箱移送。
+      </p>
+      <div class="card-actions">
+        <a href="2026-06-korea-ballot-shortage.html" class="btn btn-primary">📄 閱讀完整調查報告</a>
+        <a href="2026-06-korea-ballot-shortage-slides.html" class="btn btn-secondary">🖥️ 瀏覽投影片簡報 (Slides)</a>
+      </div>
+    </article>
+
+    <!-- Card 2: BAM 樂高收藏品寄售爭端 -->
+    <article class="brief-card" data-category="business" data-search="Bricks Minifigs Mansell LEGO 樂高 星際大戰 加盟店 寄售 侵占 商業爭端 奧勒岡州">
+      <div class="card-header">
+        <span class="card-date">2026-06-04</span>
+        <span class="card-tag">商業 · 契約與法律爭端</span>
+        <span class="card-tag">美國奧勒岡州 Salem</span>
+      </div>
+      <h2 class="card-title">
+        <a href="2026-06-bam-lego-dossier.html">Bricks & Minifigs / Mansell 樂高收藏品寄售爭端調查</a>
+      </h2>
+      <p class="card-desc">
+        Bryan 與 Warren Mansell 指控其價值高達 20 萬美元之稀有星際大戰樂高收藏品，寄售予奧勒岡州 Salem 的 Bricks & Minifigs 加盟門市後未獲足額清償或返還；BAM 總部強調加盟店獨立營運、否認連帶侵權責任，並已在多州提起商譽與法律訴訟。
+      </p>
+      <div class="card-actions">
+        <a href="2026-06-bam-lego-dossier.html" class="btn btn-primary">📄 閱讀完整調查報告</a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- 無搜尋結果提示 -->
+  <div class="empty-state" id="emptyState">
+    <div style="font-size:2rem;margin-bottom:8px;">🔎</div>
+    <strong>未找到相符的簡報</strong>
+    <p>請嘗試其他搜尋關鍵字或清除篩選分類。</p>
+  </div>
+</main>
+
+<footer>
+  <strong>Brief · 獨立研究與新聞事實梳理簡報庫</strong><br>
+  所有報告均採繁體中文報導體撰寫 · 來源公開透明可查證<br>
+  © 2026 Brief Project · Hosted on GitHub Pages
+</footer>
+
+<script>
+  // ── 即時搜尋與分類過濾 ──
+  const searchInput = document.getElementById('searchInput');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.brief-card');
+  const emptyState = document.getElementById('emptyState');
+
+  let currentCategory = 'all';
+
+  function filterBriefs() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      const searchData = (card.getAttribute('data-search') + ' ' + card.innerText).toLowerCase();
+
+      const matchCategory = (currentCategory === 'all' || category === currentCategory);
+      const matchQuery = (query === '' || searchData.includes(query));
+
+      if (matchCategory && matchQuery) {
+        card.style.display = 'block';
+        visibleCount++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    emptyState.style.display = (visibleCount === 0) ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', filterBriefs);
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-category');
+      filterBriefs();
+    });
+  });
+</script>
+
 </body>
 </html>
