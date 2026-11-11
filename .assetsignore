@@ -1,0 +1,8 @@
+.git
+.git/**
+.agents
+.agents/**
+.gitignore
+.pagesignore
+.assetsignore
+wrangler.json
