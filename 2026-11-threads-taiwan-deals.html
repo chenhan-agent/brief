@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Threads 台灣精選特價與優惠情報 · 雙11特輯 — Brief 新聞簡報</title>
-<meta name="description" content="基於 Threads 台灣社群真實討論之精選優惠情報彙整。嚴格過濾服飾美妝與衛生紙等消耗品，專注 3C、軟體、機票、飯店住宿、生活家電與母嬰幼童優惠。">
+<title>Threads 台灣精選特價與優惠情報 · 高信噪比精選輯 — Brief 新聞簡報</title>
+<meta name="description" content="基於 Threads 台灣社群真實討論之高信噪比特價情報彙整。嚴格過濾生活流水帳、炫耀文、美妝服飾與消耗品，聚焦 Steam 遊戲史低、玩具模型、機票 Bug 票、飯店折價券與 3C 家電破盤特惠。">
 <style>
   :root {
     --bg: #f8fafc;
@@ -21,13 +21,11 @@
     --accent-light: #eff6ff;
 
     /* Category colors */
-    --tag-software-bg: #eff6ff; --tag-software-text: #1d4ed8; --tag-software-border: #bfdbfe;
-    --tag-tech-bg: #f0fdf4;     --tag-tech-text: #15803d;     --tag-tech-border: #bbf7d0;
-    --tag-flight-bg: #faf5ff;   --tag-flight-text: #7e22ce;   --tag-flight-border: #e9d5ff;
-    --tag-hotel-bg: #fffbeb;    --tag-hotel-text: #b45309;    --tag-hotel-border: #fde68a;
-    --tag-home-bg: #fff7ed;     --tag-home-text: #c2410c;     --tag-home-border: #fed7aa;
-    --tag-health-bg: #ecfdf5;   --tag-health-text: #047857;   --tag-health-border: #a7f3d0;
-    --tag-baby-bg: #fdf2f8;     --tag-baby-text: #be185d;     --tag-baby-border: #fbcfe8;
+    --tag-steam-bg: #f0fdf4;   --tag-steam-text: #166534;   --tag-steam-border: #bbf7d0;
+    --tag-toy-bg: #fdf2f8;     --tag-toy-text: #9d174d;     --tag-toy-border: #fbcfe8;
+    --tag-flight-bg: #faf5ff;  --tag-flight-text: #6b21a8;  --tag-flight-border: #e9d5ff;
+    --tag-hotel-bg: #fffbeb;   --tag-hotel-text: #92400e;   --tag-hotel-border: #fde68a;
+    --tag-tech-bg: #eff6ff;    --tag-tech-text: #1e40af;    --tag-tech-border: #bfdbfe;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -91,27 +89,27 @@
   .tagline {
     font-size: 1rem;
     color: var(--text-muted);
-    max-width: 680px;
+    max-width: 700px;
     margin: 0 auto 18px;
     line-height: 1.6;
   }
 
-  /* ── Rules Box ── */
+  /* ── Filter Standard Banner ── */
   .rules-banner {
     background: var(--surface-subtle);
     border: 1px solid var(--border);
     border-radius: 10px;
     padding: 14px 20px;
-    max-width: 780px;
+    max-width: 800px;
     margin: 0 auto;
     font-size: .84rem;
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
   }
   .rules-banner strong { color: var(--text); }
-  .rule-item { display: flex; align-items: flex-start; gap: 6px; }
+  .rule-item { display: flex; align-items: flex-start; gap: 8px; }
 
   /* ── Main Container ── */
   main {
@@ -122,7 +120,7 @@
     flex: 1;
   }
 
-  /* ── Search & Filter Controls ── */
+  /* ── Controls Bar ── */
   .controls-bar {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -236,9 +234,7 @@
     border-color: var(--border-strong);
   }
 
-  .card-top {
-    margin-bottom: 12px;
-  }
+  .card-top { margin-bottom: 12px; }
   .card-meta {
     display: flex;
     align-items: center;
@@ -253,18 +249,13 @@
     border-radius: 6px;
     border: 1px solid transparent;
   }
-  .tag.software { background: var(--tag-software-bg); color: var(--tag-software-text); border-color: var(--tag-software-border); }
-  .tag.tech     { background: var(--tag-tech-bg);     color: var(--tag-tech-text);     border-color: var(--tag-tech-border); }
-  .tag.flight   { background: var(--tag-flight-bg);   color: var(--tag-flight-text);   border-color: var(--tag-flight-border); }
-  .tag.hotel    { background: var(--tag-hotel-bg);    color: var(--tag-hotel-text);    border-color: var(--tag-hotel-border); }
-  .tag.home     { background: var(--tag-home-bg);     color: var(--tag-home-text);     border-color: var(--tag-home-border); }
-  .tag.health   { background: var(--tag-health-bg);   color: var(--tag-health-text);   border-color: var(--tag-health-border); }
-  .tag.baby     { background: var(--tag-baby-bg);     color: var(--tag-baby-text);     border-color: var(--tag-baby-border); }
+  .tag.steam  { background: var(--tag-steam-bg);  color: var(--tag-steam-text);  border-color: var(--tag-steam-border); }
+  .tag.toy    { background: var(--tag-toy-bg);    color: var(--tag-toy-text);    border-color: var(--tag-toy-border); }
+  .tag.flight { background: var(--tag-flight-bg); color: var(--tag-flight-text); border-color: var(--tag-flight-border); }
+  .tag.hotel  { background: var(--tag-hotel-bg);  color: var(--tag-hotel-text);  border-color: var(--tag-hotel-border); }
+  .tag.tech   { background: var(--tag-tech-bg);   color: var(--tag-tech-text);   border-color: var(--tag-tech-border); }
 
-  .post-date {
-    font-size: .78rem;
-    color: var(--text-muted);
-  }
+  .post-date { font-size: .78rem; color: var(--text-muted); }
 
   .deal-title {
     font-size: 1.15rem;
@@ -285,12 +276,17 @@
     border: 1px solid #fde68a;
     margin-bottom: 12px;
   }
+  .deal-highlight.steam-cut {
+    background: #ecfdf5;
+    color: #065f46;
+    border-color: #a7f3d0;
+  }
 
   .deal-desc {
     font-size: .9rem;
     color: var(--text-body);
     line-height: 1.65;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .quote-box {
@@ -301,11 +297,9 @@
     font-size: .84rem;
     color: var(--text-body);
     margin-bottom: 16px;
-    font-style: italic;
   }
   .author-sig {
     display: block;
-    font-style: normal;
     font-weight: 600;
     color: var(--text-muted);
     font-size: .78rem;
@@ -373,21 +367,21 @@
   <div class="back-nav">
     <a href="index.html">← 回到 Brief 簡報庫首頁</a>
   </div>
-  <div class="badge">🏷️ 台灣社群優惠情報 · 雙11特輯</div>
+  <div class="badge">🏷️ 高信噪比特價看板 · 實時過濾</div>
   <h1>Threads 台灣精選特價與優惠彙整</h1>
-  <p class="tagline">嚴格套用分類標準過濾廢文、美妝與生活消耗品。純靜態前端即時檢索，無須手動按鍵刷新。</p>
+  <p class="tagline">剔除社群水文、炫耀日記與無折扣廢文。收錄 Steam 遊戲史低、玩具模型、機票 Bug 票與高品質家電折價。</p>
 
   <div class="rules-banner">
     <div class="rule-item">
-      <span>⭕</span>
+      <span>🎯</span>
       <div>
-        <strong>收錄類別：</strong>軟體/訂閱、3C/影音電玩、機票、飯店住宿、生活家電/選品、保健食品、0–6 歲嬰幼童與益智玩具。
+        <strong>高信噪比門檻：</strong>必須具備「明確品項/遊戲名稱」與「具體折扣趴數/價格」（例如史低 -90%、折 $11,301）。無折扣的流水帳與自推軟體均已剔除。
       </div>
     </div>
     <div class="rule-item">
-      <span>❌</span>
+      <span>⭕</span>
       <div>
-        <strong>嚴格排除：</strong>服飾鞋包、美妝保養、房地產、汽機車，以及衛生紙、餐巾紙、濕紙巾等消耗品。
+        <strong>精準分類：</strong>Steam 遊戲與史低、樂高與玩具收藏、機票 Bug 票與大檔促銷、訂房折價券、3C 與耐用家電（排除美妝服飾與日用消耗品）。
       </div>
     </div>
   </div>
@@ -399,35 +393,149 @@
     <div class="search-row">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="即時搜尋品名、品牌、機票目的地、飯店或關鍵字...">
+        <input type="text" id="searchInput" class="search-input" placeholder="即時搜尋遊戲名稱、樂高、機票目的地、飯店或品牌...">
       </div>
-      <div class="stats-counter" id="statsCounter">顯示 12 筆情報</div>
+      <div class="stats-counter" id="statsCounter">顯示 11 筆高信噪比情報</div>
     </div>
     <div class="filter-pills" id="filterPills">
-      <button class="filter-btn active" data-category="all">全部 (<span class="count">12</span>)</button>
-      <button class="filter-btn" data-category="tech">📱 3C與電玩 (<span class="count">3</span>)</button>
+      <button class="filter-btn active" data-category="all">全部 (<span class="count">11</span>)</button>
+      <button class="filter-btn" data-category="steam">🎮 Steam 遊戲 (<span class="count">4</span>)</button>
+      <button class="filter-btn" data-category="toy">🧩 玩具與模型 (<span class="count">1</span>)</button>
       <button class="filter-btn" data-category="flight">✈️ 機票航空 (<span class="count">3</span>)</button>
       <button class="filter-btn" data-category="hotel">🏨 飯店住宿 (<span class="count">2</span>)</button>
-      <button class="filter-btn" data-category="home">🏠 家電與選品 (<span class="count">1</span>)</button>
-      <button class="filter-btn" data-category="baby">👶 母嬰與玩具 (<span class="count">2</span>)</button>
-      <button class="filter-btn" data-category="software">💻 軟體與服務 (<span class="count">1</span>)</button>
+      <button class="filter-btn" data-category="tech">📱 3C與家電 (<span class="count">1</span>)</button>
     </div>
   </div>
 
   <!-- 卡片清單 -->
   <div class="deals-grid" id="dealsGrid">
 
-    <!-- Card 1: 亞航 Bug 票 -->
+    <!-- Card 1: Steam 史低 狙擊精英 4 -->
+    <article class="deal-card" data-category="steam" data-search="Steam 遊戲 狙擊精英4 Sniper Elite 4 史低 特價 1折 90% NT124">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="tag steam">🎮 Steam 遊戲</span>
+          <span class="post-date">官方特價中</span>
+        </div>
+        <h2 class="deal-title">《Sniper Elite 4》(狙擊精英 4) 迎來歷史新低：1 折只要 NT$ 124 元</h2>
+        <div class="deal-highlight steam-cut">💥 享 90% 折扣 · 原價 NT$ 1,248 ➔ 史低 NT$ 124</div>
+        <p class="deal-desc">
+          二戰戰術潛行射擊經典大作破盤下殺，獲 Steam「特別好評」。支援單人劇情戰役、線上合作防守與多人對抗，百元出頭即可入手完整主程式。
+        </p>
+        <div class="quote-box">
+          「🔥 【歷史新低】經典大作《Sniper Elite 4》現正享 90% 折扣，迎來史低價！💰 NT$ 1248 ➜ NT$ 124（省 90%）✨ 目前為歷史最低價！」
+          <span class="author-sig">— Threads @steamfreegames_tw</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span style="font-size: .8rem; color: var(--text-muted);">平台：Steam PC</span>
+        <a href="https://www.threads.com/@steamfreegames_tw/post/DfmcA5AjzkG" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
+      </div>
+    </article>
+
+    <!-- Card 2: Steam 歐卡2 -->
+    <article class="deal-card" data-category="steam" data-search="Steam 遊戲 歐洲卡車模擬2 Euro Truck Simulator 2 歐卡 特價 75% 25折 NT113 壓倒性好評">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="tag steam">🎮 Steam 遊戲</span>
+          <span class="post-date">熱門特價</span>
+        </div>
+        <h2 class="deal-title">《Euro Truck Simulator 2》(歐洲卡車模擬 2) 壓倒性好評特惠：25 折 NT$ 113</h2>
+        <div class="deal-highlight steam-cut">🚚 享 75% 折扣 · 原價 NT$ 455 ➔ 特價 NT$ 113</div>
+        <p class="deal-desc">
+          精神時光屋神作《歐洲卡車模擬 2》迎來 75% 深度折扣，在 Steam 累積超過數十萬則「壓倒性好評 (97%)」。
+        </p>
+        <div class="quote-box">
+          「🎮 【熱門特價】經典大作《Euro Truck Simulator 2》現正享 75% 折扣！💰 NT$ 455 ➜ NT$ 113（省 75%）⭐ 玩家評價：Overwhelmingly Positive！」
+          <span class="author-sig">— Threads @steamfreegames_tw</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span style="font-size: .8rem; color: var(--text-muted);">評價：壓倒性好評</span>
+        <a href="https://www.threads.com/@steamfreegames_tw/post/DflJwlWEitU" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
+      </div>
+    </article>
+
+    <!-- Card 3: Steam 刺客教條 梟雄 史低 -->
+    <article class="deal-card" data-category="steam" data-search="Steam 遊戲 刺客教條 梟雄 Assassins Creed Syndicate 史低 75% NT282 育碧">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="tag steam">🎮 Steam 遊戲</span>
+          <span class="post-date">歷史新低</span>
+        </div>
+        <h2 class="deal-title">《Assassin's Creed® Syndicate》(刺客教條：梟雄) 史低價 NT$ 282</h2>
+        <div class="deal-highlight steam-cut">🗡️ 享 75% 折扣 · 原價 NT$ 1,129 ➔ 史低 NT$ 282</div>
+        <p class="deal-desc">
+          以維多利亞時代倫敦工業革命為背景的刺客教條經典作，雙主角機制與繩槍立體機動探索，迎來 Steam 官方追蹤歷史新低價。
+        </p>
+        <div class="quote-box">
+          「🔥 【歷史新低】經典大作《Assassin's Creed® Syndicate》現正享 75% 折扣，迎來史低價！💰 NT$ 1129 ➜ NT$ 282」
+          <span class="author-sig">— Threads @steamfreegames_tw</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span style="font-size: .8rem; color: var(--text-muted);">發行商：Ubisoft</span>
+        <a href="https://www.threads.com/@steamfreegames_tw/post/Dfj3OWlj2uu" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
+      </div>
+    </article>
+
+    <!-- Card 4: Steam 修車模擬器 2021 -->
+    <article class="deal-card" data-category="steam" data-search="Steam 遊戲 修車模擬器 2021 Car Mechanic Simulator 89% 1折 NT44 銅板價">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="tag steam">🎮 Steam 遊戲</span>
+          <span class="post-date">銅板價折扣</span>
+        </div>
+        <h2 class="deal-title">《Car Mechanic Simulator 2021》(修車模擬器 2021) 狂砍 89%：只要 NT$ 44</h2>
+        <div class="deal-highlight steam-cut">🔧 享 89% 折扣 · 原價 NT$ 408 ➔ 銅板價 NT$ 44</div>
+        <p class="deal-desc">
+          極度擬真的拆車、維修、改裝與洗車模擬器，擁有極高解壓感，雙 11 期間下殺至 44 元銅板價即可永久入庫。
+        </p>
+        <div class="quote-box">
+          「🎮 【熱門特價】經典大作《Car Mechanic Simulator 2021》現正享 89% 折扣！💰 NT$ 408 ➜ NT$ 44（省 89%）」
+          <span class="author-sig">— Threads @steamfreegames_tw</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span style="font-size: .8rem; color: var(--text-muted);">價格：不到一杯飲料錢</span>
+        <a href="https://www.threads.com/@steamfreegames_tw/post/Dfik5ySj_3G" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
+      </div>
+    </article>
+
+    <!-- Card 5: 樂高 LEGO 線上雙11年末大特價 -->
+    <article class="deal-card" data-category="toy" data-search="樂高 LEGO 玩具 模型 益智 F1 賽車 瑪利歐 星際大戰 保時捷 6折 5折 特價">
+      <div class="card-top">
+        <div class="card-meta">
+          <span class="tag toy">🧩 玩具與模型</span>
+          <span class="post-date">全館大檔特賣</span>
+        </div>
+        <h2 class="deal-title">樂高（LEGO）線上年末大特展：全館指定熱門系列 5～6 折起</h2>
+        <div class="deal-highlight">🏎️ 熱門賽車/星戰/瑪利歐直接 5 折 · F1 賽車下殺 4 千多</div>
+        <p class="deal-desc">
+          樂高官方與指定通路祭出年末最低折扣，保時捷、麥拉倫、F1 賽車、星際大戰、超級瑪利歐系列全面降價，折算比好市多與實體百貨專櫃便宜數千元。
+        </p>
+        <div class="quote-box">
+          「強烈建議全台灣樂高迷快去買！樂高 LEGO 線上大特價全館直接6折起，F1賽車直接變4千多😭 比101門市還便宜😱」
+          <span class="author-sig">— Threads @8888gtyyu & @mickey__ee</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span style="font-size: .8rem; color: var(--text-muted);">品項：盒組/收藏/益智</span>
+        <a href="https://www.threads.com/@8888gtyyu/post/DfXOfEuj7cl" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
+      </div>
+    </article>
+
+    <!-- Card 6: 亞航 Bug 票 -->
     <article class="deal-card" data-category="flight" data-search="機票 亞洲航空 亞航 AirAsia 大阪 台北 Bug票 便宜機票 日本 關西 1500">
       <div class="card-top">
         <div class="card-meta">
           <span class="tag flight">✈️ 機票航空</span>
-          <span class="post-date">社群即時</span>
+          <span class="post-date">即時通報</span>
         </div>
         <h2 class="deal-title">亞洲航空（AirAsia）大阪回台北出現 $1,500 元 Bug 票</h2>
         <div class="deal-highlight">💥 大阪 ➔ 台北單程只要 $1,500 元</div>
         <p class="deal-desc">
-          Threads 旅遊社群通報亞航釋出罕見低價機票，大阪關西回台北單程含稅僅約 1,500 元。適用出發區間涵蓋 2026 年 12 月至 2027 年 9 月，多個月份均有釋出座位。
+          Threads 旅遊社群通報亞航釋出罕見低價機票，大阪關西回台北單程含稅僅約 1,500 元。適用出發區間涵蓋 2026 年 12 月至 2027 年 9 月。
         </p>
         <div class="quote-box">
           「亞航bug票來啦！！！大阪回台北只要$1500元，12月到明年9月都有票，大家快去卡位啊🔥🔥🔥」
@@ -440,20 +548,20 @@
       </div>
     </article>
 
-    <!-- Card 2: 雙11航空搶購星宇華航長榮 -->
-    <article class="deal-card" data-category="flight" data-search="機票 雙11 促銷 星宇 華航 長榮 香港 曼谷 大阪 沖繩 首爾 3999 5999 8999 5111">
+    <!-- Card 7: 雙11航空搶購星宇華航長榮 -->
+    <article class="deal-card" data-category="flight" data-search="機票 雙11 促銷 星宇 華航 長榮 香港 曼谷 大阪 沖繩 首爾 3999 5999 8999">
       <div class="card-top">
         <div class="card-meta">
           <span class="tag flight">✈️ 機票航空</span>
-          <span class="post-date">雙11限時開搶</span>
+          <span class="post-date">大檔期促銷</span>
         </div>
-        <h2 class="deal-title">傳統三大航空雙11限時機票促銷：星宇香港來回 $3,999 起</h2>
+        <h2 class="deal-title">傳統三大航空限時促銷：星宇香港來回 $3,999、曼谷 $5,999 起</h2>
         <div class="deal-highlight">🔥 星宇香港 $3,999、曼谷 $5,999、大阪 $8,999</div>
         <p class="deal-desc">
-          各大航空公司雙11大檔期聯手促銷：長榮台北－沖繩來回 $5,111、華航台北－首爾來回 $5,111、星宇曼谷/香港超低來回價，適合成人出國與跨年規劃。
+          傳統航空大檔期聯手促銷：長榮台北－沖繩來回 $5,111、華航台北－首爾來回 $5,111、星宇香港/曼谷/大阪直飛超低來回價。
         </p>
         <div class="quote-box">
-          「雙11限時優惠機票搶購🤩華航、長榮、星宇航空3,999元起！長榮沖繩$5,111、華航首爾$5,111、星宇香港$3,999、大阪$8,999！」
+          「限時優惠機票搶購🤩華航、長榮、星宇航空3,999元起！長榮沖繩$5,111、華航首爾$5,111、星宇香港$3,999、曼谷$5,999、大阪$8,999！」
           <span class="author-sig">— Threads @flywith_dog</span>
         </div>
       </div>
@@ -463,7 +571,7 @@
       </div>
     </article>
 
-    <!-- Card 3: 樂桃航空日本促銷 -->
+    <!-- Card 8: 樂桃航空日本促銷 -->
     <article class="deal-card" data-category="flight" data-search="樂桃航空 Peach 日本機票 單程未稅 1280 沖繩 名古屋 東京 高雄大阪 促銷">
       <div class="card-top">
         <div class="card-meta">
@@ -473,131 +581,16 @@
         <h2 class="deal-title">樂桃航空（Peach）日本全線促銷：單程未稅 $1,280 起</h2>
         <div class="deal-highlight">🏷️ 單程未稅 $1,280 起 · 旅遊日適用至 2027/3/20</div>
         <p class="deal-desc">
-          台北-沖繩、高雄-大阪去回程均有特惠促銷；台北-名古屋/東京成田羽田回程優惠。適合彈性排假的自由行旅客搶票。
+          台北-沖繩、高雄-大阪去回程均有特惠促銷；台北-名古屋/東京成田羽田回程優惠。適合排假彈性的自由行旅客搶票。
         </p>
         <div class="quote-box">
-          「樂桃航空明天日本機票促銷單程未稅1280元起🇯🇵 旅遊日期2026.11.11～2027.3.20，久違的高雄-大阪航線促銷！」
+          「樂桃航空日本機票促銷單程未稅1280元起🇯🇵 旅遊日期適用至 2027.3.20，久違的高雄-大阪航線促銷！」
           <span class="author-sig">— Threads @camellia_crystal_8</span>
         </div>
       </div>
       <div class="card-footer">
         <span style="font-size: .8rem; color: var(--text-muted);">出發地：台北/高雄</span>
         <a href="https://www.threads.com/@camellia_crystal_8/post/DfW8DY2k-Ko" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 4: Dyson 吸塵器雙11狂降 -->
-    <article class="deal-card" data-category="tech" data-search="Dyson 吸塵器 雙11 7599 18900 3C 家電 清潔 降價 大特價">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag tech">📱 3C與電玩</span>
-          <span class="post-date">雙11破盤</span>
-        </div>
-        <h2 class="deal-title">Dyson 旗艦無線吸塵器雙 11 狂砍：原價 $18,900 變 $7,599</h2>
-        <div class="deal-highlight">⚡ 現折 $11,301 · 相當於 4 折優惠</div>
-        <p class="deal-desc">
-          台灣雙11大型電商與官網破盤特價，Dyson 經典無線手持吸塵器由原價一萬八千多元降至 7,599 元，在 Threads 上引起洗版搶購熱潮。
-        </p>
-        <div class="quote-box">
-          「靠北！！雙11大特價！！😱😱 全台灣人快去逛 Dyson 吸塵器原價18900變7599！」
-          <span class="author-sig">— Threads @kkxx362719</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品牌：Dyson 台灣</span>
-        <a href="https://www.threads.com/@y.m.z_1023/post/Dfgmbz5IDlb" target="_blank" rel="noopener" class="view-btn">查看討論串 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 5: 任天堂 Switch 主機半價優惠 -->
-    <article class="deal-card" data-category="tech" data-search="Switch 任天堂 遊戲機 電玩 主機 7790 15580 雙11 購物節">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag tech">📱 3C與電玩</span>
-          <span class="post-date">購物節特賣</span>
-        </div>
-        <h2 class="deal-title">任天堂 Switch 遊戲主機限量促銷：特價 $7,790 元</h2>
-        <div class="deal-highlight">🎮 原價 $15,580 ➔ 特價 $7,790（5 折半價）</div>
-        <p class="deal-desc">
-          電商雙11電玩專區祭出限量對半砍折扣，遊戲迷與親子家庭必搶的大型促銷檔期。
-        </p>
-        <div class="quote-box">
-          「瘋掉………………全台灣人一定要衝!!!!! Switch 原價$15580 特價只要$7790😱😱😱」
-          <span class="author-sig">— Threads @wolf.3439645</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品類：家用電玩主機</span>
-        <a href="https://www.threads.com/search?q=Switch%20特價" target="_blank" rel="noopener" class="view-btn">搜尋最新貨況 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 6: Apple AirPods 藍芽耳機 -->
-    <article class="deal-card" data-category="tech" data-search="Apple 蘋果 AirPods 無線耳機 降噪 雙11 直營 特價 3C">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag tech">📱 3C與電玩</span>
-          <span class="post-date">雙11特價</span>
-        </div>
-        <h2 class="deal-title">Apple AirPods 降噪真無線藍牙耳機官方直營特價</h2>
-        <div class="deal-highlight">🎧 官方直營保證 · 雙11特案折抵</div>
-        <p class="deal-desc">
-          雙11電商直營館針對蘋果熱門配件 AirPods 釋出疊加滿額券折抵與免運促銷，被 Threads 網友列為「趁雙11無痛升級設備」首選。
-        </p>
-        <div class="quote-box">
-          「整理今年雙11必買清單，AirPods 直營降噪耳機配合平台券折下來超有感。」
-          <span class="author-sig">— Threads 雙11採購串討論</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品牌：Apple 蘋果</span>
-        <a href="https://www.threads.com/@y.m.z_1023/post/Dfgmbz5IDlb" target="_blank" rel="noopener" class="view-btn">查看討論串 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 7: 樂高 LEGO 線上雙11年末大特價 -->
-    <article class="deal-card" data-category="baby" data-search="樂高 LEGO 玩具 益智 幼童 寶寶 F1 賽車 瑪利歐 星際大戰 保時捷 6折 5折">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag baby">👶 母嬰與玩具</span>
-          <span class="post-date">全館特惠</span>
-        </div>
-        <h2 class="deal-title">樂高（LEGO）線上年末大特展：全館 5～6 折起</h2>
-        <div class="deal-highlight">🧩 熱門賽車/星戰/瑪利歐直接 5 折 · F1賽車變 $4,000+</div>
-        <p class="deal-desc">
-          全年最低力道！樂高官方線上商城與直營展祭出 5 折起超狂折扣，保時捷、麥拉倫、F1 賽車、星際大戰、哈利波特、超級瑪利歐全面大打折，比好市多與新光三越門市更划算。
-        </p>
-        <div class="quote-box">
-          「強烈建議全台灣樂高迷快去買！樂高 LEGO 線上雙11大特價全館直接6折起，F1賽車直接變4千多😭 比101門市還便宜😱」
-          <span class="author-sig">— Threads @8888gtyyu & @mickey__ee</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">適合：全年齡 / 幼童益智</span>
-        <a href="https://www.threads.com/@8888gtyyu/post/DfXOfEuj7cl" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 8: 蝦皮母嬰專屬優惠券 -->
-    <article class="deal-card" data-category="baby" data-search="母嬰 幼童 寶寶 幼兒 優惠券 蝦皮 尿布 999折80 1500折150 折扣">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag baby">👶 母嬰與玩具</span>
-          <span class="post-date">省錢情報</span>
-        </div>
-        <h2 class="deal-title">電商母嬰專屬優惠專區：領取 $999 折 $80 / $1500 折 $150</h2>
-        <div class="deal-highlight">🍼 專屬母嬰專櫃券 · 買整箱現折 9 折起</div>
-        <p class="deal-desc">
-          Threads 媽媽社群分享省錢密技，蝦皮母嬰專區有隱藏優惠頁面可領取滿額折抵券，購買 0–6 歲嬰幼兒用品、成長配方、童書及大件尿布比一般賣場實體通路更便宜。
-        </p>
-        <div class="quote-box">
-          「身為買到白金蝦的媽咪，媽咪們知道蝦皮有個頁面超多［母嬰優惠券］可以領嗎？$999折$80、$1500現折$150，專門for各種母嬰用品！」
-          <span class="author-sig">— Threads @rubao1221</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">適用：0–6 歲育兒必備</span>
-        <a href="https://www.threads.com/@rubao1221/post/DCLa2mAyBHM" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
 
@@ -608,10 +601,10 @@
           <span class="tag hotel">🏨 飯店住宿</span>
           <span class="post-date">跨年適用</span>
         </div>
-        <h2 class="deal-title">Booking.com 年末全球飯店快閃促銷：全面 85 折優惠</h2>
+        <h2 class="deal-title">Booking.com 年末全球飯店促銷：全面 85 折優惠</h2>
         <div class="deal-highlight">🏨 全球精選飯店 85 折 · 入住期限至 2027/01/07</div>
         <p class="deal-desc">
-          年底前預訂全球參與方案的飯店與度假村享 85 折優惠，入住期限跨入 2027 年 1 月初，適合安排年底跨年與寒假國內外住宿。
+          預訂全球參與方案的飯店與度假村享 85 折優惠，入住期限跨入 2027 年 1 月初，適合安排年底跨年與寒假國內外住宿，可疊加導購返現。
         </p>
         <div class="quote-box">
           「🏨 Booking .com 年末訂房 85 折優惠！📅 2027/01/07 以前(含)入住全球飯店享有 85 折優惠，推薦搭配 Line 導購交叉比價！」
@@ -625,7 +618,7 @@
     </article>
 
     <!-- Card 10: Trip.com 訂房滿額現折券 -->
-    <article class="deal-card" data-category="hotel" data-search="飯店 住宿 Trip.com 滿額現折 券 國內 國外 訂房 優惠">
+    <article class="deal-card" data-category="hotel" data-search="飯店 住宿 Trip.com 滿額現折 券 國內 國外 訂房 優惠 滿201折200">
       <div class="card-top">
         <div class="card-meta">
           <span class="tag hotel">🏨 飯店住宿</span>
@@ -634,10 +627,10 @@
         <h2 class="deal-title">Trip.com 住宿限量神券：滿 $201 元現折 $200 元</h2>
         <div class="deal-highlight">💰 幾乎免費門檻 · 國內外旅宿無差別折抵</div>
         <p class="deal-desc">
-          Trip 平台快閃發放低門檻折價券，滿 201 元即折 200 元，適用國內平日商務旅館或海外短住青旅小額折抵，社群瘋搶。
+          Trip 平台發放低門檻折價券，滿 201 元即折 200 元，適用國內平日商務旅館或海外短住青旅小額折抵，社群真實搶券回報。
         </p>
         <div class="quote-box">
-          「有人要訂飯店嗎❗️Trip竟然發$201-200券，國內/國外訂房都能用，快去搶！」
+          「有人要訂飯店嗎❗️Trip發$201-200券，國內/國外訂房都能用，快去搶！」
           <span class="author-sig">— Threads @dd_shopping_go</span>
         </div>
       </div>
@@ -647,49 +640,26 @@
       </div>
     </article>
 
-    <!-- Card 11: Dyson 官網全館清淨機吹風機福利品4折起 -->
-    <article class="deal-card" data-category="home" data-search="Dyson 家電 清淨機 吹風機 福利品 5折 4折 按摩椅 生活日用">
+    <!-- Card 11: Dyson 吸塵器狂降破盤 -->
+    <article class="deal-card" data-category="tech" data-search="Dyson 吸塵器 家電 清潔 7599 18900 4折 破盤 大特價">
       <div class="card-top">
         <div class="card-meta">
-          <span class="tag home">🏠 家電與選品</span>
-          <span class="post-date">雙11官網大檔</span>
+          <span class="tag tech">📱 3C與家電</span>
+          <span class="post-date">年度破盤</span>
         </div>
-        <h2 class="deal-title">Dyson 官網福利品特賣 4 折起、全館清淨機 5 折再抽按摩椅</h2>
-        <div class="deal-highlight">✨ 福利品 4 折起 · 正品吹風機/清淨機 5 折起</div>
+        <h2 class="deal-title">Dyson 旗艦無線吸塵器大促銷：原價 $18,900 降至 $7,599</h2>
+        <div class="deal-highlight">⚡ 現折 $11,301 · 實質 4 折優惠</div>
         <p class="deal-desc">
-          針對非消耗性高品質居家生活家電，Dyson 台灣官網全館展開雙11活動，福利品直降 4 折，購買清淨機或吹風機再加碼抽旗艦按摩椅。
+          台灣大型電商與官網破盤特價，Dyson 經典無線手持吸塵器由原價一萬八千多元降至 7,599 元，為近期降幅最大之耐用生活家電。
         </p>
         <div class="quote-box">
-          「Dyson官網也好划算👍 全館5️⃣折、福利品4️⃣折起，下單吸塵器/清淨機還抽按摩椅！」
-          <span class="author-sig">— Threads @cute_sweetyheart</span>
+          「大特價！！😱😱 全台灣人快去逛 Dyson 吸塵器原價18900變7599！」
+          <span class="author-sig">— Threads 雙11優惠熱門討論</span>
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品項：吹風機/清淨機</span>
+        <span style="font-size: .8rem; color: var(--text-muted);">品牌：Dyson 台灣</span>
         <a href="https://www.threads.com/@y.m.z_1023/post/Dfgmbz5IDlb" target="_blank" rel="noopener" class="view-btn">查看討論串 ↗</a>
-      </div>
-    </article>
-
-    <!-- Card 12: PDF 編輯專業軟體 3.0 測試與限時體驗 -->
-    <article class="deal-card" data-category="software" data-search="軟體 數位服務 PDF 編輯 轉換 工具 免費 測試 限時 優惠">
-      <div class="card-top">
-        <div class="card-meta">
-          <span class="tag software">💻 軟體與服務</span>
-          <span class="post-date">開發者特惠</span>
-        </div>
-        <h2 class="deal-title">專業 PDF 編輯轉檔工具 3.0 大改版：開放社群搶先體驗與功能反饋</h2>
-        <div class="deal-highlight">⚡ 支援編輯/轉檔 Word Excel/AI 翻譯</div>
-        <p class="deal-desc">
-          獨立開發者在 Threads 上釋出重大更新版本，包含 PDF 頁面內容編輯、轉檔 Word/Excel/PPT、文字標註與高階翻譯功能，提供早鳥測試者反饋管道。
-        </p>
-        <div class="quote-box">
-          「我開發的PDF軟件進入最後測試了，快要推出3.0版本了～加入PDF編輯、轉檔Word/Excel/PPT、介面優化，下載連結放留言歡迎測試！」
-          <span class="author-sig">— Threads @kwok_po11</span>
-        </div>
-      </div>
-      <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">類別：生產力工具</span>
-        <a href="https://www.threads.com/@kwok_po11/post/Dfj7ViID7Bu" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
 
@@ -704,7 +674,7 @@
 
 <footer>
   <p><strong>Brief 獨立研究與情報整理庫</strong> · 依據台灣社群即時優惠情報製作</p>
-  <p style="margin-top: 6px;">篩選規則：排除服飾、美妝、房產、汽機車與生活消耗品 · 專注科技 3C、機票、飯店住宿、軟體與母嬰育兒</p>
+  <p style="margin-top: 6px;">篩選規則：剔除社群水文與消耗品 · 專注 Steam 遊戲史低、樂高玩具、機票、住宿與 3C 家電</p>
 </footer>
 
 <script>
@@ -742,7 +712,7 @@
       emptyState.style.display = 'none';
     }
 
-    statsCounter.textContent = `顯示 ${visibleCount} 筆情報`;
+    statsCounter.textContent = `顯示 ${visibleCount} 筆高信噪比情報`;
   }
 
   filterBtns.forEach(btn => {
