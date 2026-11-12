@@ -90,8 +90,29 @@
     font-size: 1rem;
     color: var(--text-muted);
     max-width: 720px;
-    margin: 0 auto 18px;
+    margin: 0 auto 14px;
     line-height: 1.6;
+  }
+
+  .update-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .82rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 4px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .update-meta .pulse-dot {
+    width: 7px;
+    height: 7px;
+    background: #10b981;
+    border-radius: 50%;
+    display: inline-block;
   }
 
   /* ── Filter Standard Banner ── */
@@ -377,6 +398,13 @@
   <div class="badge">🏷️ 高信噪比特價看板 · 常態更新</div>
   <h1>Threads 台灣精選特價與優惠彙整</h1>
   <p class="tagline">常態追蹤社群高信噪比特價。收錄 Steam 遊戲史低、玩具模型、機票 Bug 票與高品質家電折價，附帶原始發文時間戳記。</p>
+
+  <div class="update-meta">
+    <span class="pulse-dot"></span>
+    <span><strong>最後更新：</strong>2026-11-12 21:25 (UTC+8)</span>
+    <span style="opacity: .5;">•</span>
+    <span>時效機制：僅保留過去 7 天有效情報</span>
+  </div>
 
   <div class="rules-banner">
     <div class="rule-item">
@@ -680,8 +708,8 @@
 </main>
 
 <footer>
-  <p><strong>Brief 獨立研究與情報整理庫</strong> · 依據台灣社群即時優惠情報製作</p>
-  <p style="margin-top: 6px;">篩選規則：剔除社群水文與消耗品 · 專注 Steam 遊戲史低、樂高玩具、機票、住宿與 3C 家電</p>
+  <p><strong>Brief 獨立研究與情報整理庫</strong> · 依據台灣社群即時優惠情報製作（最後更新：2026-11-12 21:25 UTC+8）</p>
+  <p style="margin-top: 6px;">篩選規則：僅保留近 7 天高信噪比情報 · 剔除水文與消耗品 · 專注 Steam 遊戲史低、樂高玩具、機票、住宿與 3C 家電</p>
 </footer>
 
 <script>
