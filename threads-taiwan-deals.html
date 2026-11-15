@@ -6,48 +6,66 @@
 <title>Threads 台灣精選特價與優惠情報 · 常態追蹤看板 — Brief 新聞簡報</title>
 <meta name="description" content="基於 Threads 台灣社群真實討論之高信噪比特價情報彙整。嚴格過濾生活流水帳、炫耀文、美妝服飾與消耗品，聚焦 Steam 遊戲史低、玩具模型、機票 Bug 票、飯店折價券與 3C 家電破盤特惠。附帶精確發文時間戳記。">
 <style>
+  /* ── Stitch Design Tokens (Single Source of Truth: DESIGN.md) ── */
   :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --surface-subtle: #f1f5f9;
-    --surface-hover: #f8fafc;
-    --border: #e2e8f0;
-    --border-strong: #cbd5e1;
-    --text: #0f172a;
-    --text-body: #334155;
-    --text-muted: #64748b;
-    --accent: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-light: #eff6ff;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-light: #eff6ff;
+    --color-background: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-subtle: #f1f5f9;
+    --color-surface-hover: #f8fafc;
+    --color-border: #e2e8f0;
+    --color-border-strong: #cbd5e1;
+    --color-text-primary: #0f172a;
+    --color-text-body: #334155;
+    --color-text-muted: #64748b;
 
-    /* Category colors */
-    --tag-steam-bg: #f0fdf4;   --tag-steam-text: #166534;   --tag-steam-border: #bbf7d0;
+    /* Category semantic palettes */
+    --tag-steam-bg: #ecfdf5;   --tag-steam-text: #065f46;   --tag-steam-border: #a7f3d0;
     --tag-toy-bg: #fdf2f8;     --tag-toy-text: #9d174d;     --tag-toy-border: #fbcfe8;
     --tag-flight-bg: #faf5ff;  --tag-flight-text: #6b21a8;  --tag-flight-border: #e9d5ff;
     --tag-hotel-bg: #fffbeb;   --tag-hotel-text: #92400e;   --tag-hotel-border: #fde68a;
     --tag-tech-bg: #eff6ff;    --tag-tech-text: #1e40af;    --tag-tech-border: #bfdbfe;
+
+    /* Spacing & Radii tokens */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --rounded-sm: 4px;
+    --rounded-md: 8px;
+    --rounded-lg: 12px;
+    --rounded-xl: 16px;
+    --rounded-full: 9999px;
+
+    /* Elevation tokens */
+    --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.02);
+    --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.05), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
+    --shadow-hover: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 8px -4px rgba(15, 23, 42, 0.03);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: var(--bg);
-    color: var(--text-body);
+    background: var(--color-background);
+    color: var(--color-text-body);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-    line-height: 1.7;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
 
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; color: var(--accent-hover); }
+  a { color: var(--color-primary); text-decoration: none; }
+  a:hover { text-decoration: underline; color: var(--color-primary-hover); }
 
   /* ── Header ── */
   header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
     padding: 40px 20px 32px;
     text-align: center;
   }
@@ -58,37 +76,38 @@
     font-size: .88rem;
   }
   .back-nav a {
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-weight: 500;
+    transition: color .15s ease;
   }
-  .back-nav a:hover { color: var(--accent); }
+  .back-nav a:hover { color: var(--color-primary); text-decoration: none; }
   .badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--accent-light);
-    color: var(--accent);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
     border: 1px solid #bfdbfe;
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: .06em;
     padding: 3px 12px;
-    border-radius: 999px;
+    border-radius: var(--rounded-full);
     margin-bottom: 12px;
   }
   h1 {
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--text);
+    color: var(--color-text-primary);
     letter-spacing: -0.02em;
     margin-bottom: 10px;
   }
   .tagline {
     font-size: 1rem;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     max-width: 720px;
     margin: 0 auto 14px;
     line-height: 1.6;
@@ -99,27 +118,33 @@
     align-items: center;
     gap: 8px;
     font-size: .82rem;
-    color: var(--text-muted);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 4px 14px;
-    border-radius: 999px;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 5px 14px;
+    border-radius: var(--rounded-full);
     margin-bottom: 20px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    box-shadow: var(--shadow-sm);
   }
   .update-meta .pulse-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: #10b981;
     border-radius: 50%;
     display: inline-block;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    animation: pulseGlow 2s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.8; }
   }
 
   /* ── Filter Standard Banner ── */
   .rules-banner {
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-lg);
     padding: 14px 20px;
     max-width: 820px;
     margin: 0 auto;
@@ -129,7 +154,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 14px;
   }
-  .rules-banner strong { color: var(--text); }
+  .rules-banner strong { color: var(--color-text-primary); }
   .rule-item { display: flex; align-items: flex-start; gap: 8px; }
 
   /* ── Main Container ── */
@@ -143,12 +168,12 @@
 
   /* ── Controls Bar ── */
   .controls-bar {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xl);
     padding: 16px 20px;
     margin-bottom: 24px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: var(--shadow-sm);
   }
   .search-row {
     display: flex;
@@ -164,30 +189,30 @@
     width: 100%;
     padding: 10px 14px 10px 38px;
     font-size: .92rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--bg);
-    color: var(--text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-md);
+    background: var(--color-background);
+    color: var(--color-text-primary);
     outline: none;
-    transition: all .15s ease;
+    transition: all .18s ease;
   }
   .search-input:focus {
-    border-color: var(--accent);
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: var(--color-primary);
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
   }
   .search-icon {
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     font-size: .9rem;
     pointer-events: none;
   }
   .stats-counter {
     font-size: .85rem;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     font-weight: 500;
     white-space: nowrap;
   }
@@ -199,27 +224,29 @@
     flex-wrap: wrap;
   }
   .filter-btn {
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text-body);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-body);
     font-size: .84rem;
     font-weight: 600;
     padding: 6px 14px;
-    border-radius: 20px;
+    border-radius: var(--rounded-full);
     cursor: pointer;
-    transition: all .15s ease;
+    transition: all .18s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 6px;
   }
   .filter-btn:hover {
-    background: var(--surface-subtle);
-    border-color: var(--border-strong);
+    background: var(--color-surface-subtle);
+    border-color: var(--color-border-strong);
+    transform: translateY(-1px);
   }
   .filter-btn.active {
-    background: var(--accent);
+    background: var(--color-primary);
     color: #ffffff;
-    border-color: var(--accent);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.25);
   }
   .filter-btn .count {
     background: rgba(0,0,0,0.06);
@@ -235,40 +262,41 @@
   .deals-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(440px, 1fr));
-    gap: 18px;
+    gap: 20px;
   }
 
   .deal-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--rounded-xl);
+    padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    box-shadow: var(--shadow-sm);
+    transition: transform .2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow .2s cubic-bezier(0.4, 0, 0.2, 1), border-color .2s ease;
   }
   .deal-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-    border-color: var(--border-strong);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-border-strong);
   }
 
-  .card-top { margin-bottom: 12px; }
+  .card-top { margin-bottom: 14px; }
   .card-meta {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .tag {
     font-size: .76rem;
     font-weight: 700;
     padding: 3px 10px;
-    border-radius: 6px;
+    border-radius: var(--rounded-sm);
     border: 1px solid transparent;
+    letter-spacing: .02em;
   }
   .tag.steam  { background: var(--tag-steam-bg);  color: var(--tag-steam-text);  border-color: var(--tag-steam-border); }
   .tag.toy    { background: var(--tag-toy-bg);    color: var(--tag-toy-text);    border-color: var(--tag-toy-border); }
@@ -278,7 +306,7 @@
 
   .post-date {
     font-size: .78rem;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -288,9 +316,10 @@
   .deal-title {
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--text);
+    color: var(--color-text-primary);
     line-height: 1.45;
     margin-bottom: 8px;
+    letter-spacing: -0.01em;
   }
 
   .deal-highlight {
@@ -300,7 +329,7 @@
     font-size: .84rem;
     font-weight: 700;
     padding: 3px 10px;
-    border-radius: 6px;
+    border-radius: var(--rounded-sm);
     border: 1px solid #fde68a;
     margin-bottom: 12px;
   }
@@ -312,24 +341,24 @@
 
   .deal-desc {
     font-size: .9rem;
-    color: var(--text-body);
+    color: var(--color-text-body);
     line-height: 1.65;
     margin-bottom: 14px;
   }
 
   .quote-box {
-    background: var(--bg);
-    border-left: 3px solid var(--accent);
+    background: var(--color-background);
+    border-left: 3px solid var(--color-primary);
     padding: 10px 14px;
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 var(--rounded-md) var(--rounded-md) 0;
     font-size: .84rem;
-    color: var(--text-body);
+    color: var(--color-text-body);
     margin-bottom: 16px;
   }
   .author-sig {
     display: block;
     font-weight: 600;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     font-size: .78rem;
     margin-top: 4px;
   }
@@ -339,45 +368,52 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+  }
+  .deal-source {
+    font-size: .8rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
   }
   .view-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: var(--surface-subtle);
-    color: var(--accent);
-    border: 1px solid var(--border);
+    background: var(--color-surface-subtle);
+    color: var(--color-primary);
+    border: 1px solid var(--color-border);
     padding: 6px 14px;
-    border-radius: 6px;
+    border-radius: var(--rounded-md);
     font-size: .82rem;
     font-weight: 600;
-    transition: all .15s ease;
+    transition: all .18s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .view-btn:hover {
-    background: var(--accent);
+    background: var(--color-primary);
     color: #ffffff;
-    border-color: var(--accent);
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
     text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .empty-state {
     grid-column: 1 / -1;
     text-align: center;
     padding: 60px 20px;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     display: none;
   }
 
   /* ── Footer ── */
   footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
     padding: 36px 20px;
     text-align: center;
     font-size: .84rem;
-    color: var(--text-muted);
+    color: var(--color-text-muted);
     line-height: 1.8;
   }
 
@@ -463,7 +499,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">平台：Steam PC</span>
+        <span class="deal-source">平台：Steam PC</span>
         <a href="https://www.threads.com/@steamfreegames_tw/post/DfmcA5AjzkG" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -486,7 +522,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">評價：壓倒性好評</span>
+        <span class="deal-source">評價：壓倒性好評</span>
         <a href="https://www.threads.com/@steamfreegames_tw/post/DflJwlWEitU" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -509,7 +545,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">發行商：Ubisoft</span>
+        <span class="deal-source">發行商：Ubisoft</span>
         <a href="https://www.threads.com/@steamfreegames_tw/post/Dfj3OWlj2uu" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -532,7 +568,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">價格：不到一杯飲料錢</span>
+        <span class="deal-source">價格：不到一杯飲料錢</span>
         <a href="https://www.threads.com/@steamfreegames_tw/post/Dfik5ySj_3G" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -555,7 +591,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品項：盒組/收藏/益智</span>
+        <span class="deal-source">品項：盒組/收藏/益智</span>
         <a href="https://www.threads.com/@8888gtyyu/post/DfXOfEuj7cl" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -578,7 +614,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">航線：KIX ➔ TPE</span>
+        <span class="deal-source">航線：KIX ➔ TPE</span>
         <a href="https://www.threads.com/@dd_shopping_go/post/DfjyjMkH-xR" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -601,7 +637,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">熱門航線：日韓/港泰</span>
+        <span class="deal-source">熱門航線：日韓/港泰</span>
         <a href="https://www.threads.com/@flywith_dog/post/DfkSaBNk6LR" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -624,7 +660,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">出發地：台北/高雄</span>
+        <span class="deal-source">出發地：台北/高雄</span>
         <a href="https://www.threads.com/@camellia_crystal_8/post/DfW8DY2k-Ko" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -647,7 +683,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">全球連鎖/獨立旅宿</span>
+        <span class="deal-source">全球連鎖/獨立旅宿</span>
         <a href="https://www.threads.com/@traveler.daisy/post/DfguupSkkeq" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -670,7 +706,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">訂房平台：Trip.com</span>
+        <span class="deal-source">訂房平台：Trip.com</span>
         <a href="https://www.threads.com/@dd_shopping_go/post/DeTyCnRCU0P" target="_blank" rel="noopener" class="view-btn">查看 Threads 原文 ↗</a>
       </div>
     </article>
@@ -693,7 +729,7 @@
         </div>
       </div>
       <div class="card-footer">
-        <span style="font-size: .8rem; color: var(--text-muted);">品牌：Dyson 台灣</span>
+        <span class="deal-source">品牌：Dyson 台灣</span>
         <a href="https://www.threads.com/@y.m.z_1023/post/Dfgmbz5IDlb" target="_blank" rel="noopener" class="view-btn">查看討論串 ↗</a>
       </div>
     </article>
