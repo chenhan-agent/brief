@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Threads 台灣精選特價與優惠情報 · 常態追蹤看板 — Brief 新聞簡報</title>
 <meta name="description" content="基於 Threads 台灣社群真實討論之高信噪比特價情報彙整。嚴格過濾生活流水帳、炫耀文、美妝服飾與消耗品，聚焦 Steam 遊戲史低、玩具模型、機票 Bug 票、飯店折價券與 3C 家電破盤特惠。附帶精確發文時間戳記。">
 <style>
@@ -48,6 +48,11 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
   body {
     background: var(--color-background);
     color: var(--color-text-body);
@@ -57,6 +62,10 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   a { color: var(--color-primary); text-decoration: none; }
@@ -184,11 +193,13 @@
   .search-wrap {
     flex: 1;
     position: relative;
+    display: flex;
+    align-items: center;
   }
   .search-input {
     width: 100%;
-    padding: 10px 14px 10px 38px;
-    font-size: .92rem;
+    padding: 10px 38px 10px 38px;
+    font-size: .95rem;
     border: 1px solid var(--color-border);
     border-radius: var(--rounded-md);
     background: var(--color-background);
@@ -209,6 +220,28 @@
     color: var(--color-text-muted);
     font-size: .9rem;
     pointer-events: none;
+  }
+  .clear-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--color-surface-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .clear-btn:hover {
+    background: var(--color-border);
+    color: var(--color-text-primary);
   }
   .stats-counter {
     font-size: .85rem;
@@ -417,11 +450,196 @@
     line-height: 1.8;
   }
 
-  @media(max-width: 640px) {
-    header { padding: 30px 16px 24px; }
-    h1 { font-size: 1.6rem; }
-    .rules-banner { grid-template-columns: 1fr; }
-    .deals-grid { grid-template-columns: 1fr; }
+  /* Floating Back to Top Button */
+  .back-to-top {
+    position: fixed;
+    bottom: max(20px, env(safe-area-inset-bottom, 20px));
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.12);
+    color: var(--color-text-primary);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    cursor: pointer;
+    z-index: 45;
+    transition: transform .15s ease, background-color .15s ease;
+  }
+  .back-to-top:hover {
+    background: var(--color-surface-subtle);
+    transform: translateY(-2px);
+  }
+
+  /* ── Mobile Friendly Ergonomics (< 640px) ── */
+  @media (max-width: 640px) {
+    header {
+      padding: 24px 16px 20px;
+    }
+    .back-nav {
+      margin-bottom: 12px;
+      font-size: .84rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .tagline {
+      font-size: .88rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .update-meta {
+      font-size: .76rem;
+      padding: 6px 12px;
+      gap: 6px;
+      line-height: 1.4;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 14px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .rules-banner {
+      grid-template-columns: 1fr;
+      padding: 10px 14px;
+      gap: 8px;
+      font-size: .78rem;
+      line-height: 1.5;
+    }
+
+    main {
+      padding: 14px 12px max(60px, env(safe-area-inset-bottom, 20px));
+    }
+    .controls-bar {
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: var(--rounded-lg);
+      position: sticky;
+      top: 8px;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+    }
+    .search-row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .search-input {
+      font-size: 16px; /* Prevents iOS Safari auto-zoom */
+      height: 44px;
+      padding: 10px 36px 10px 36px;
+    }
+    .stats-counter {
+      text-align: right;
+      font-size: .78rem;
+      color: var(--color-text-muted);
+    }
+    .filter-pills {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+      margin: 0 -4px;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    .filter-pills::-webkit-scrollbar {
+      display: none;
+    }
+    .filter-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 8px 14px;
+      min-height: 40px;
+      font-size: .82rem;
+    }
+
+    .deals-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .deal-card {
+      padding: 18px 16px;
+      border-radius: var(--rounded-lg);
+    }
+    .card-top {
+      margin-bottom: 10px;
+    }
+    .card-meta {
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    .tag {
+      font-size: .74rem;
+      padding: 3px 8px;
+    }
+    .post-date {
+      font-size: .75rem;
+    }
+    .deal-title {
+      font-size: 1.05rem;
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+    .deal-highlight {
+      font-size: .78rem;
+      padding: 3px 8px;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .deal-desc {
+      font-size: .86rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .quote-box {
+      padding: 8px 12px;
+      font-size: .82rem;
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+    .author-sig {
+      font-size: .75rem;
+    }
+    .card-footer {
+      padding-top: 12px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+    }
+    .deal-source {
+      font-size: .78rem;
+      text-align: left;
+    }
+    .view-btn {
+      width: 100%;
+      min-height: 42px;
+      justify-content: center;
+      padding: 10px 14px;
+      font-size: .86rem;
+      box-sizing: border-box;
+    }
+    footer {
+      padding: 28px 16px max(40px, env(safe-area-inset-bottom, 20px));
+      font-size: .8rem;
+    }
   }
 </style>
 </head>
@@ -464,7 +682,8 @@
     <div class="search-row">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" class="search-input" placeholder="即時搜尋遊戲名稱、樂高、機票目的地、飯店或品牌...">
+        <input type="text" id="searchInput" class="search-input" placeholder="即時搜尋遊戲名稱、樂高、機票目的地、飯店或品牌..." autocomplete="off">
+        <button type="button" id="clearSearch" class="clear-btn" aria-label="清除搜尋">✕</button>
       </div>
       <div class="stats-counter" id="statsCounter">顯示 14 筆高信噪比情報</div>
     </div>
@@ -817,12 +1036,17 @@
   <p style="margin-top: 6px;">篩選規則：僅保留近 7 天高信噪比情報 · 剔除水文與消耗品 · 專注 Steam 遊戲史低、樂高玩具、機票、住宿與 3C 家電</p>
 </footer>
 
+<!-- Floating Back to Top Button -->
+<button type="button" id="backToTop" class="back-to-top" aria-label="回到頁首">↑</button>
+
 <script>
   const searchInput = document.getElementById('searchInput');
+  const clearSearch = document.getElementById('clearSearch');
   const filterBtns = document.querySelectorAll('.filter-btn');
   const cards = document.querySelectorAll('.deal-card');
   const emptyState = document.getElementById('emptyState');
   const statsCounter = document.getElementById('statsCounter');
+  const backToTop = document.getElementById('backToTop');
 
   let currentCategory = 'all';
   let searchQuery = '';
@@ -866,7 +1090,28 @@
 
   searchInput.addEventListener('input', (e) => {
     searchQuery = e.target.value;
+    clearSearch.style.display = searchQuery ? 'flex' : 'none';
     filterCards();
+  });
+
+  clearSearch.addEventListener('click', () => {
+    searchInput.value = '';
+    searchQuery = '';
+    clearSearch.style.display = 'none';
+    searchInput.focus();
+    filterCards();
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = 'flex';
+    } else {
+      backToTop.style.display = 'none';
+    }
+  }, { passive: true });
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 </script>
 
